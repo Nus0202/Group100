@@ -1,0 +1,106 @@
+/**
+ * Virginia Tech Honor Code Pledge:
+ * 
+ * As a Hokie, I will conduct myself with honor and integrity
+ * at all times.
+ * I will not lie, cheat, or steal, nor will I accept the actions of
+ * those who do.
+ * --Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+ */
+
+/**
+ * 
+ * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+ * @version 04.21.2021
+ */
+public class StateData {
+
+    private String stateName;
+    private LinkedList<Race> races;
+
+    /**
+     * Creates a new StateData object
+     * 
+     * @param name
+     *            This StateData's name
+     * @param whiteCases
+     *            This StateData's total number of white COVID-19 cases
+     * @param blackCases
+     *            This StateData's total number of black COVID-19 cases
+     * @param latinoCases
+     *            This StateData's total number of latino COVID-19 cases
+     * @param asianCases
+     *            This StateData's total number of asian COVID-19 cases
+     * @param otherCases
+     *            This StateData's total number of other races COVID-19 cases
+     * @param whiteD
+     *            This StateData's number of white COVID-19 deaths
+     * @param blackD
+     *            This StateData's number of black COVID-19 deaths
+     * @param latinoD
+     *            This StateData's number of latino COVID-19 deaths
+     * @param asianD
+     *            This StateData's number of asian COVID-19 deaths
+     * @param otherD
+     *            This StateData's number of other races COVID-19 deaths
+     */
+    public StateData(
+        String name,
+        int whiteCases,
+        int blackCases,
+        int latinoCases,
+        int asianCases,
+        int otherCases,
+        int whiteD,
+        int blackD,
+        int latinoD,
+        int asianD,
+        int otherD) {
+
+        stateName = name;
+        Race white = new Race("white", whiteCases, whiteD);
+        Race black = new Race("black", blackCases, blackD);
+        Race latino = new Race("latino", latinoCases, latinoD);
+        Race asian = new Race("asian", asianCases, asianD);
+        Race otherRaces = new Race("other", otherCases, otherD);
+
+        races.add(white);
+        races.add(black);
+        races.add(latino);
+        races.add(asian);
+        races.add(otherRaces);
+    }
+
+
+    /**
+     * Gets this StateData's name
+     * 
+     * @return This StateData object's name
+     */
+    public String getName() {
+
+        return stateName;
+    }
+
+
+    /**
+     * Sorts the LinkedList of Race objects by alphabetically order
+     */
+    public void sortByAlpha() {
+
+        // Collections.sort(races, new SortByAlphabet());
+
+    }
+
+
+    /**
+     * Sorts the LinkedList of Race objects by CFR, with the
+     * Race object with the highest CFR being first and the Race object
+     * with the lowest CFR Race being last
+     */
+    public void sortByCFR() {
+
+        Collections.sort(races);
+        // Collections.sort(races, new SortByAlphabet());
+    }
+}

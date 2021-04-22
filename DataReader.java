@@ -1,3 +1,10 @@
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I accept the actions of those who
+// do.
+// -- Zhengxiao Sun, Emily Kroliczak, Sean Stolburg
+
 package prj5;
 
 import java.io.File;
@@ -14,7 +21,8 @@ import bsh.ParseException;
  */
 public class DataReader {
 
-    private LinkedList<StateData> stateData;
+    @SuppressWarnings("unused")
+    private LinkedList<StateData> data;
 
     /**
      * This constructor will creates a colony and window based on input files.
@@ -24,7 +32,10 @@ public class DataReader {
     public DataReader(String filename)
         throws ParseException,
         FileNotFoundException {
-        this.stateData = readFile(filename);
+        this.data = readFile(filename);
+
+        // will create a GUIWindow here.
+
     }
 
 
@@ -41,36 +52,20 @@ public class DataReader {
         FileNotFoundException {
 
         Scanner scan = new Scanner(new File(filename));
-        String currentLine = scan.nextLine();
         LinkedList<StateData> state = new LinkedList<StateData>();
 
         while (scan.hasNextLine()) {
-            LinkedList<Race> races = new LinkedList<Race>();
-            currentLine = scan.nextLine();
+
             String[] array = scan.nextLine().split(", *");
-            StateDate stateCase = new StateDate(array[0]);
 
-            Race white = new Race("White", checkNA(array[1]), checkNA(
-                array[6]));
-            Race black = new Race("black", checkNA(array[2]), checkNA(
-                array[7]));
-            Race latinX = new Race("latinX", checkNA(array[3]), checkNA(
-                array[8]));
-            Race asian = new Race("asian", checkNA(array[4]), checkNA(
-                array[9]));
-            Race other = new Race("other", checkNA(array[5]), checkNA(
-                array[10]));
-
-            races.add(white);
-            races.add(black);
-            races.add(latinX);
-            races.add(asian);
-            races.add(other);
-
-            stateCase.races.add(races);
+            StateData stateCase = new StateData(array[0], checkNA(array[1]),
+                checkNA(array[2]), checkNA(array[3]), checkNA(array[4]),
+                checkNA(array[5]), checkNA(array[6]), checkNA(array[7]),
+                checkNA(array[8]), checkNA(array[9]), checkNA(array[10]));
 
             state.add(stateCase);
         }
+        return state;
     }
 
 
@@ -84,7 +79,7 @@ public class DataReader {
      */
     private int checkNA(String string) {
         if (string.equals("NA")) {
-            return -1;
+            return 0;
         }
         return Integer.valueOf(string);
     }

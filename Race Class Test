@@ -1,0 +1,122 @@
+/**
+ * Virginia Tech Honor Code Pledge:
+ * 
+ * As a Hokie, I will conduct myself with honor and integrity
+ * at all times.
+ * I will not lie, cheat, or steal, nor will I accept the actions of
+ * those who do.
+ * --Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+ */
+
+/**
+ * Tests all of the methods in the Race class to
+ * ensure that they run and perform as expected
+ * 
+ * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+ * @version 04.21.2021
+ */
+public class RaceTest extends student.TestCase {
+
+    private Race asian;
+
+    /**
+     * Sets up each test method before it runs
+     */
+    public void setUp() {
+
+        asian = new Race("asian", 5000, 1000);
+    }
+
+
+    /**
+     * Tests getRace() to ensure it returns the correct name
+     * of the Race object calling this method
+     */
+    public void testGetName() {
+
+        assertEquals("asian", asian.getRace());
+    }
+
+
+    /**
+     * Tests getCFR() to ensure it returns the correct CFR
+     * of the Race object calling this method
+     */
+    public void testGetCRF() {
+
+        assertEquals(20, asian.getCFR(), 0.1);
+    }
+
+
+    /**
+     * Tests compareTo() to ensure it returns -1 when the
+     * parameter Race object has a greater CFR
+     */
+    public void testCompareToSmallCFR() {
+
+        Race latinx = new Race("latinx", 5000, 3000);
+
+        assertEquals(60.0, latinx.getCFR(), 0.1);
+
+        assertEquals(-1, asian.compareTo(latinx));
+    }
+
+
+    /**
+     * Tests compareTo() to ensure it returns 1 when the
+     * parameter Race object has a smaller CFR
+     */
+    public void testCompareToLargeCFR() {
+
+        Race latinx = new Race("latinx", 5000, 500);
+
+        assertEquals(10.0, latinx.getCFR(), 0.1);
+
+        assertEquals(1, asian.compareTo(latinx));
+    }
+
+
+    /**
+     * Tests compareTo() to ensure it returns a negative value when the
+     * parameter Race object has the same CFR but has a larger name
+     * (lexicographically order)
+     */
+    public void testCompareToSmallName() {
+
+        Race latinx = new Race("latinx", 5000, 1000);
+
+        assertEquals(20.0, latinx.getCFR(), 0.1);
+
+        assertEquals(-11, asian.compareTo(latinx));
+    }
+
+
+    /**
+     * Tests compareTo() to ensure it returns a positive value when the
+     * parameter Race object has the same CFR but has a smaller name
+     * (lexicographically order)
+     */
+    public void testCompareToLargeName() {
+
+        Race latinx = new Race("latinx", 5000, 1000);
+
+        assertEquals(20.0, latinx.getCFR(), 0.1);
+
+        assertEquals(11, latinx.compareTo(asian));
+    }
+
+
+    /**
+     * Tests compareTo() to ensure it returns 0 when the
+     * parameter Race object has the same CFR and name
+     * (lexicographically order)
+     */
+    public void testCompareToSameCFRAndName() {
+
+        Race asian = new Race("asian", 5000, 1000);
+
+        assertEquals(20.0, asian.getCFR(), 0.1);
+
+        assertEquals(0, asian.compareTo(asian));
+    }
+}

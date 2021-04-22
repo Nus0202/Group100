@@ -1,3 +1,10 @@
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I accept the actions of those who
+// do.
+// -- Zhengxiao Sun, Emily Kroliczak, Sean Stolburg
+
 package prj5;
 
 /**
@@ -28,7 +35,7 @@ public class Input {
             new DataReader(args[0]);
         }
         else {
-            new DataReader("input.txt");
+            new DataReader("");
         }
     }
 }

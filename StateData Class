@@ -84,6 +84,16 @@ public class StateData {
 
 
     /**
+     * Gets this StateData's LinkedList of Race objects
+     * 
+     * @return This StateData's LinkedList<Race>
+     */
+    public LinkedList<Race> getLinkedList() {
+        
+        return races; 
+    }
+
+    /**
      * Sorts the LinkedList of Race objects by alphabetically order
      */
     public void sortByAlpha() {

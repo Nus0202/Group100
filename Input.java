@@ -21,7 +21,7 @@ import bsh.ParseException;
 public class Input {
 
     /**
-     * main method which will uses different constructor by different
+     * main method which will uses constructor by
      * parameters.
      * 
      * @param args
@@ -31,11 +31,23 @@ public class Input {
     public static void main(String[] args)
         throws ParseException,
         FileNotFoundException {
+
+        DataReader reader;
+
         if (args.length == 1) {
-            new DataReader(args[0]);
+            reader = new DataReader(args[0]);
         }
         else {
-            new DataReader("");
+            reader = new DataReader(
+                "Cases_and_Deaths_by_race_CRDT_Sep2020.csv");
         }
+
+        LinkedList<StateData> states = reader.getStates();
+        
+        for (StateData state : states) {
+            System.out.println(state.toString());
+            System.out.println("----------------------------------------");
+        }
+         
     }
 }

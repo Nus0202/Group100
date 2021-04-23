@@ -77,8 +77,25 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
     }
     
     @Override
+    public T get(int index) {
+        if (index >= size || index < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        
+        int counter = 0;
+        for (T entry: this) {
+            if (counter == index) {
+                return entry;
+            }
+            counter++;
+        }
+        
+        return null;
+    }
+    
+    @Override
     public void setPosition(T entry, int index) {
-        if (index > size || index < 0) {
+        if (index >= size || index < 0) {
             throw new IllegalArgumentException();
         }
         else if (!contains(entry)) {

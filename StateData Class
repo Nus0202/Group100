@@ -1,3 +1,5 @@
+package prj5;
+
 /**
  * Virginia Tech Honor Code Pledge:
  * 
@@ -9,6 +11,8 @@
  */
 
 /**
+ * Represents StateData objects, whose function within this program will
+ * including storing Race objects into LinkedLists
  * 
  * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
  * @version 04.21.2021
@@ -64,6 +68,8 @@ public class StateData {
         Race asian = new Race("asian", asianCases, asianD);
         Race otherRaces = new Race("other", otherCases, otherD);
 
+        races = new LinkedList<Race>();
+
         races.add(white);
         races.add(black);
         races.add(latino);
@@ -89,28 +95,40 @@ public class StateData {
      * @return This StateData's LinkedList<Race>
      */
     public LinkedList<Race> getLinkedList() {
-        
-        return races; 
-    }
 
-    /**
-     * Sorts the LinkedList of Race objects by alphabetically order
-     */
-    public void sortByAlpha() {
-
-        // Collections.sort(races, new SortByAlphabet());
-
+        return races;
     }
 
 
     /**
-     * Sorts the LinkedList of Race objects by CFR, with the
-     * Race object with the highest CFR being first and the Race object
-     * with the lowest CFR Race being last
+     * Returns a string representation of this StateData
+     * <StateData name> [Race object 1, Race object 2, ...]
+     * 
+     * @return This StateData's string representation
      */
-    public void sortByCFR() {
+    public String toString() {
 
-        Collections.sort(races);
-        // Collections.sort(races, new SortByAlphabet());
+        StringBuilder builder = new StringBuilder();
+
+        builder.append(this.stateName + ": ");
+        builder.append(this.races.toString());
+
+        return builder.toString();
+    }
+
+    /**
+     * Sorts the LinkedList of Race objects by alphabetical order
+     */
+    public void sortByAlphabet() {
+
+        races.sort(new SortByAlpha());
+    }
+
+    /**
+     * Sorts the LinkedList of Race objects in descending order of CFR
+     */
+    public void sortByCaseFatalityRatio() {
+
+        races.sort(new SortByCFR());
     }
 }

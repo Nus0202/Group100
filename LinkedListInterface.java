@@ -37,11 +37,4 @@ public interface LinkedListInterface<T> {
      * @param entry the entry to remove
      */
     public abstract void remove(T entry);
-    
-    /**
-     * Changes the position of the given entry
-     * @param entry the entry
-     * @param index to this position
-     */
-    public abstract void setPosition(T entry, int index);
 }

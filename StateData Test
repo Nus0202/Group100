@@ -50,8 +50,9 @@ public class StateDataTest extends student.TestCase {
 
         LinkedList<Race> listOfRaces = virginia.getLinkedList();
 
-        assertEquals("{white CFR: 20.0, black CFR: 30.0, latino CFR: 40.0, "
-            + "asian CFR: 50.0, other CFR: 60.0}", listOfRaces.toString());
+        assertEquals("{white: 5000 cases, 20.0% CFR, black: 5000 cases," 
+        + " 30.0% CFR, latino: 5000 cases, 40.0% CFR, asian: 5000 cases, " + 
+            "50.0% CFR, other: 5000 cases, 60.0% CFR}", listOfRaces.toString());
     }
 
 
@@ -60,10 +61,11 @@ public class StateDataTest extends student.TestCase {
      * representation of thus StateData object
      */
     public void testToString() {
-
-        assertEquals("virginia: {white CFR: 20.0, black CFR: 30.0,"
-            + " latino CFR: 40.0, asian CFR: 50.0, other CFR: 60.0}", virginia
-                .toString());
+        
+        assertEquals("virginia: {white: 5000 cases, 20.0% CFR, black:" + 
+            " 5000 cases, 30.0% CFR, latino: 5000 cases, 40.0% CFR, asian: " + 
+                "5000 cases, 50.0% CFR, other: 5000 cases, 60.0% CFR}", 
+                virginia.toString());
     }
 
 
@@ -75,9 +77,9 @@ public class StateDataTest extends student.TestCase {
 
         virginia.sortByAlphabet();
 
-        assertEquals(
-            "virginia: {asian CFR: 50.0, black CFR: 30.0, latino CFR: 40.0, "
-                + "other CFR: 60.0, white CFR: 20.0}", virginia.toString());
+        assertEquals("virginia: {asian: 5000 cases, 50.0% CFR, black: 5000" + 
+        " cases, 30.0% CFR, latino: 5000 cases, 40.0% CFR, other: 5000 cases," + 
+            " 60.0% CFR, white: 5000 cases, 20.0% CFR}",  virginia.toString());
     }
 
 
@@ -88,10 +90,9 @@ public class StateDataTest extends student.TestCase {
     public void testSortByCaseFatalityRatio() {
 
         virginia.sortByCaseFatalityRatio();
-
-        assertEquals(
-            "virginia: {other CFR: 60.0, asian CFR: 50.0, latino CFR: 40.0,"
-                + " black CFR: 30.0, white CFR: 20.0}", virginia.toString());
+        
+        assertEquals("virginia: {other: 5000 cases, 60.0% CFR, asian: 5000 cases," + 
+        " 50.0% CFR, latino: 5000 cases, 40.0% CFR, black: 5000 cases, 30.0% CFR," + 
+            " white: 5000 cases, 20.0% CFR}", virginia.toString());
     }
-
 }

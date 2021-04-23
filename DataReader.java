@@ -21,7 +21,6 @@ import bsh.ParseException;
  */
 public class DataReader {
 
-    @SuppressWarnings("unused")
     private LinkedList<StateData> data;
 
     /**
@@ -95,6 +94,16 @@ public class DataReader {
             return 0;
         }
         return Integer.valueOf(string);
+    }
+
+
+    /**
+     * Getter method for the states field.
+     * 
+     * @return states field
+     */
+    public LinkedList<StateData> getStates() {
+        return data;
     }
 
 }

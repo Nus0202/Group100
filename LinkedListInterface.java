@@ -1,9 +1,23 @@
 package prj5;
 
 /**
+ * Virginia Tech Honor Code Pledge:
+ * 
+ * As a Hokie, I will conduct myself with honor and integrity
+ * at all times.
+ * I will not lie, cheat, or steal, nor will I accept the actions of
+ * those who do.
+ * --Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+ */
+
+/**
  * Interface for a Linked List
- * @author Sean Stolburg (seanstolburg88)
- * @version 4/21/2021
+ * 
+ * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+ * @version 4.22.2021
+ * 
+ * @param <T>
+ *            The type parameter to be used for LinkedList
  */
 public interface LinkedListInterface<T> {
     /**
@@ -23,13 +37,6 @@ public interface LinkedListInterface<T> {
      * @param entry the entry to remove
      */
     public abstract void remove(T entry);
-    
-    /**
-     * Gets the entry at the given index
-     * @param index the index
-     * @return the entry
-     */
-    public abstract T get(int index);
     
     /**
      * Changes the position of the given entry

@@ -42,6 +42,9 @@ public class Race {
         this.raceName = name;
         this.totalCases = caseNum; 
         caseFatalityRatio = ((deathNum / (double)caseNum) * 100);
+        
+        DecimalFormat df1 = new DecimalFormat("0.##");
+        df1.format(caseFatalityRatio); 
     }
     
     /**
@@ -72,10 +75,7 @@ public class Race {
      * @return This Race object's string representation 
      */
     public String toString() {
-        
-        DecimalFormat df1 = new DecimalFormat("0.##");
-        df1.format(caseFatalityRatio); 
-        
+               
         StringBuilder builder = new StringBuilder();
 
         builder.append(this.raceName);

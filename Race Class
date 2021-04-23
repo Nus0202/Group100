@@ -25,6 +25,7 @@ public class Race {
 
     private String raceName;
     private int totalCases;
+    private int deathCases;
     private double caseFatalityRatio;
 
     /**
@@ -41,7 +42,8 @@ public class Race {
 
         this.raceName = name;
         this.totalCases = caseNum;
-
+        this.deathCases = deathNum;
+        
         if (caseNum == -1 || deathNum == -1) {
             caseFatalityRatio = -1;
         }
@@ -49,6 +51,7 @@ public class Race {
             caseFatalityRatio = ((deathNum / (double)caseNum) * 100);
         }
     }
+
 
     /**
      * Gets this Race's name
@@ -80,9 +83,10 @@ public class Race {
      */
     public String toString() {
 
+        
         DecimalFormat df1 = new DecimalFormat("0.##");
         df1.format(caseFatalityRatio);
-        
+
         StringBuilder builder = new StringBuilder();
 
         builder.append(this.raceName);
@@ -92,3 +96,4 @@ public class Race {
         return builder.toString();
     }
 }
+

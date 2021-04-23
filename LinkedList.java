@@ -1,17 +1,15 @@
-/**
- * Virginia Tech Honor Code Pledge:
- * 
- * As a Hokie, I will conduct myself with honor and integrity
- * at all times.
- * I will not lie, cheat, or steal, nor will I accept the actions of
- * those who do.
- * --Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
- */
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I accept the actions of those who
+// do.
+// -- Zhengxiao Sun, Emily Kroliczak, Sean Stolburg
 
 package prj5;
 
 import java.util.Comparator;
 import java.util.Iterator;
+import java.lang.Iterable;
 
 /**
  * A Linked List of Nodes
@@ -57,22 +55,17 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
         }
     }
 
-    /**
-     * Gets the node that contains the data
-     * @param data the given data
-     * @return the node
-     */
+
     private Node getNode(T data) {
-        if (contains(data)) {
-            Node curr = head;
-            for (int i = 0; i < size; i++) {
+        Node curr = head;
+        for (int i = 0; i < size; i++) {
+            if (curr != null) {
                 if (curr.data.equals(data)) {
                     return curr;
                 }
                 curr = curr.next;
             }
         }
-        
         return null;
     }
 
@@ -97,12 +90,8 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
             size--;
         }
     }
-    
-    /**
-     * Whether the LL contains the entry
-     * @param entry the entry
-     * @return whether the list has it
-     */
+
+
     private boolean contains(T entry) {
         for (T data : this) {
             if (data.equals(entry)) {
@@ -116,7 +105,7 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
     /**
      * Sorts the LinkedList based on the ordering of the parameter Comparator
      * 
-     * @param comparator
+     * @param comaprator
      *            Determines the ordering of the LinkedList
      */
     public void sort(Comparator<T> comparator) {
@@ -176,7 +165,7 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
 
     @Override
     public String toString() {
-        String returning = "{";
+        String returning = "";
 
         Node current = head;
         while (current != null) {
@@ -185,9 +174,9 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
             if (current != null) {
                 returning = returning + ", ";
             }
+            returning = returning + "\n";
         }
 
-        returning = returning + "}";
         return returning;
     }
 

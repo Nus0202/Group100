@@ -33,7 +33,6 @@ public class DataReaderTest extends student.TestCase {
     }
 
 
-    
     public void testDataReader() {
         String filename1 = "CovidOutput_1.txt";
         Exception thrown = null;

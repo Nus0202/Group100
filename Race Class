@@ -84,15 +84,15 @@ public class Race {
     public String toString() {
 
         
-        DecimalFormat df1 = new DecimalFormat("0.##");
-        df1.format(caseFatalityRatio);
+        DecimalFormat df1 = new DecimalFormat("0.0");
+        String stringCFR = df1.format(caseFatalityRatio);
 
         StringBuilder builder = new StringBuilder();
 
         builder.append(this.raceName);
         builder.append(": " + this.totalCases + " cases, ");
 
-        builder.append(this.caseFatalityRatio + "% CFR");
+        builder.append(stringCFR + "% CFR");
         return builder.toString();
     }
 }

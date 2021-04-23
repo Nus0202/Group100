@@ -55,10 +55,17 @@ public class DataReaderTest extends student.TestCase {
      * @throws ParseException 
      * 
      */
-    public void testGetStates() throws ParseException, FileNotFoundException {
+    public void testGetStates() {
         String filename2 = "Cases_and_Deaths_by_race_CRDT_Sep2020.csv";
-        read = new DataReader(filename2);
         DataReader read2 = read;
         assertEquals(read, read2);
+        Exception thrown = null;
+        try {
+            read = new DataReader(filename2);
+        }
+        catch (Exception exception) {
+            thrown = exception;
+        }
+        assertFalse(thrown instanceof ParseException);
     }
 }

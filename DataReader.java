@@ -53,10 +53,18 @@ public class DataReader {
 
         Scanner scan = new Scanner(new File(filename));
         LinkedList<StateData> state = new LinkedList<StateData>();
+        String currentLine = scan.nextLine();
 
         while (scan.hasNextLine()) {
 
-            String[] array = scan.nextLine().split(", *");
+            currentLine = scan.nextLine();
+            String[] array = currentLine.split(", *");
+
+            if (array.length < 11 || array.length > 11) {
+                scan.close();
+                throw new ParseException(
+                    "The amount of data in this line is incorrect.");
+            }
 
             StateData stateCase = new StateData(array[0], checkNA(array[1]),
                 checkNA(array[2]), checkNA(array[3]), checkNA(array[4]),

@@ -1,9 +1,3 @@
-package prj5;
-
-import java.util.Comparator;
-import java.util.Iterator;
-import java.lang.Iterable;
-
 /**
  * Virginia Tech Honor Code Pledge:
  * 
@@ -13,6 +7,13 @@ import java.lang.Iterable;
  * those who do.
  * --Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
  */
+
+package prj5;
+
+import java.util.Comparator;
+import java.util.Iterator;
+import java.lang.Iterable;
+
 /**
  * A Linked List of Nodes
  * 
@@ -92,42 +93,7 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
             size--;
         }
     }
-
-
-    @Override
-    public void setPosition(T entry, int index) {
-        if (index > size || index < 0) {
-            throw new IllegalArgumentException();
-        }
-        else if (!contains(entry)) {
-            throw new IllegalArgumentException();
-        }
-
-        // Remove old node
-        remove(entry);
-        size++;
-
-        if (index == 0) {
-            // add new node to head
-            Node newHead = new Node(entry);
-            newHead.setNext(head);
-            head = newHead;
-        }
-        else {
-            // add new node to index
-            Node curr2 = head;
-            for (int i = 0; i < size; i++) {
-                if (i == index - 1) {
-                    Node newNode = new Node(entry);
-                    newNode.setNext(curr2.next);
-                    curr2.setNext(newNode);
-                }
-                curr2 = curr2.next;
-            }
-        }
-    }
-
-
+    
     private boolean contains(T entry) {
         for (T data : this) {
             if (data.equals(entry)) {

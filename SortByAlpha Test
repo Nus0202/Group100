@@ -1,0 +1,67 @@
+package prj5;
+
+/**
+ * Virginia Tech Honor Code Pledge:
+ * 
+ * As a Hokie, I will conduct myself with honor and integrity
+ * at all times.
+ * I will not lie, cheat, or steal, nor will I accept the actions of
+ * those who do.
+ * --Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+ */
+
+/**
+ * Tests the compare() method inside SortByAlpha class to
+ * ensure that it runs and performs as expected
+ * 
+ * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+ * @version 4.22.2021
+ */
+
+public class SortByAlphaTest extends student.TestCase {
+
+    private SortByAlpha comparator;
+    private Race white;
+    private Race black;
+    private Race latino;
+
+    /**
+     * Sets up each test method before it runs
+     */
+    public void setUp() {
+
+        comparator = new SortByAlpha();
+
+        white = new Race("white", 5000, 2000);
+        black = new Race("black", 5000, 1000);
+        latino = new Race("latino", 5000, 3000);
+    }
+
+
+    /**
+     * Tests compare() to ensure it returns a positive value when the
+     * first parameter object's name has a larger value
+     */
+    public void testComparePos() {
+
+        assertEquals(21, comparator.compare(white, black));
+    }
+    
+    /**
+     * Tests compare() to ensure it returns a negative value when the
+     * first parameter object's name has a smaller value
+     */
+    public void testCompareNeg() {
+
+        assertEquals(-10, comparator.compare(black, latino));
+    }
+    
+    /**
+     * Tests compare() to ensure it returns 0 when the two parameter 
+     * Race object have the same name
+     */
+    public void testCompareZero() {
+
+        assertEquals(0, comparator.compare(black, black));
+    }
+}

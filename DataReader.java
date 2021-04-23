@@ -91,7 +91,7 @@ public class DataReader {
      */
     private int checkNA(String string) {
         if (string.equals("NA")) {
-            return 0;
+            return -1;
         }
         return Integer.valueOf(string);
     }

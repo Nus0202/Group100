@@ -12,7 +12,6 @@ package prj5;
 
 import java.util.Comparator;
 import java.util.Iterator;
-import java.lang.Iterable;
 
 /**
  * A Linked List of Nodes
@@ -58,17 +57,22 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
         }
     }
 
-
+    /**
+     * Gets the node that contains the data
+     * @param data the given data
+     * @return the node
+     */
     private Node getNode(T data) {
-        Node curr = head;
-        for (int i = 0; i < size; i++) {
-            if (curr != null) {
+        if (contains(data)) {
+            Node curr = head;
+            for (int i = 0; i < size; i++) {
                 if (curr.data.equals(data)) {
                     return curr;
                 }
                 curr = curr.next;
             }
         }
+        
         return null;
     }
 
@@ -94,6 +98,11 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
         }
     }
     
+    /**
+     * Whether the LL contains the entry
+     * @param entry the entry
+     * @return whether the list has it
+     */
     private boolean contains(T entry) {
         for (T data : this) {
             if (data.equals(entry)) {
@@ -107,7 +116,7 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
     /**
      * Sorts the LinkedList based on the ordering of the parameter Comparator
      * 
-     * @param comaprator
+     * @param comparator
      *            Determines the ordering of the LinkedList
      */
     public void sort(Comparator<T> comparator) {

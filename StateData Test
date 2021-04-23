@@ -50,9 +50,8 @@ public class StateDataTest extends student.TestCase {
 
         LinkedList<Race> listOfRaces = virginia.getLinkedList();
 
-        assertEquals(
-            "{white CFR: 20.0, black CFR: 30.0, latino CFR: 40.0, asian CFR: 50.0, "
-                + "other CFR: 60.0}", listOfRaces.toString());
+        assertEquals("{white CFR: 20.0, black CFR: 30.0, latino CFR: 40.0, "
+            + "asian CFR: 50.0, other CFR: 60.0}", listOfRaces.toString());
     }
 
 
@@ -96,4 +95,3 @@ public class StateDataTest extends student.TestCase {
     }
 
 }
-

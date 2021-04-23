@@ -7,12 +7,8 @@
 
 package prj5;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 import bsh.ParseException;
-import queue.EmptyQueueException;
-import student.testingsupport.annotations.Hint;
 
 /**
  * This is a test class for DataReader class.
@@ -32,12 +28,12 @@ public class DataReaderTest extends student.TestCase {
      * @throws FileNotFoundException
      * @throws ParseException
      */
-    public void setUp() throws ParseException, FileNotFoundException {
+    public void setUp() {
         filename = "Cases_and_Deaths_by_race_RANDOM_NUMBERS.csv";
-        read = new DataReader(filename);
     }
 
 
+    
     public void testDataReader() {
         String filename1 = "CovidOutput_1.txt";
         Exception thrown = null;

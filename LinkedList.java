@@ -58,17 +58,22 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
     @Override
     public void remove(T entry) {
         if (!contains(entry)) {
-            return;
+            throw new IllegalArgumentException();
         }
-        
-        Node curr = head;
-        for (int i = 0; i < size - 1; i++) {
-            if (curr.next.data.equals(entry)) {
-                curr.next = curr.next.next;
+        else if (head.data.equals(entry)) {
+            head = head.next;
+            size--;
+        }
+        else {
+            Node curr = head;
+            for (int i = 0; i < size - 1; i++) {
+                if (curr.next.data.equals(entry)) {
+                    curr.next = curr.next.next;
+                }
+                curr = curr.next;
             }
-            curr = curr.next;
+            size--;
         }
-        size--;
     }
     
     @Override
@@ -191,7 +196,7 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
      * @author Sean Stolburg (seanstolburg88)
      * @version 4/22/2021
      */
-    private class LLIterator implements Iterator<T> {
+    public class LLIterator implements Iterator<T> {
         private Node curr = head;
         
         @Override

@@ -21,9 +21,7 @@ package prj5;
  */
 public class Race {
 
-    private String race;
-    private int totalCases;
-    private int totalDeaths;
+    private String raceName;
     private double caseFatalityRatio;
 
     /**
@@ -38,10 +36,8 @@ public class Race {
      */
     public Race(String name, int caseNum, int deathNum) {
 
-        race = name;
-        totalCases = caseNum;
-        totalDeaths = deathNum;
-        caseFatalityRatio = ((totalDeaths / (double)totalCases) * 100);
+        this.raceName = name;
+        caseFatalityRatio = ((deathNum / (double)caseNum) * 100);
     }
     
     /**
@@ -51,7 +47,7 @@ public class Race {
      */
     public String getRace() {
 
-        return race;
+        return this.raceName;
     }
 
 
@@ -62,7 +58,7 @@ public class Race {
      */
     public double getCFR() {
 
-        return caseFatalityRatio;
+        return this.caseFatalityRatio;
     }
 
     
@@ -76,7 +72,7 @@ public class Race {
         
         StringBuilder builder = new StringBuilder();
 
-        builder.append(this.race); 
+        builder.append(this.raceName); 
         builder.append(" CFR: " + this.caseFatalityRatio); 
         return builder.toString();
     }   

@@ -12,6 +12,8 @@ package prj5;
  * 
  * @author Zhengxiao Sun
  *         PID:9062-79113
+ *         Sean Stolburg
+ *         seanstolburg88
  * @version 2021.4.22
  */
 
@@ -28,26 +30,28 @@ public class Input {
      *            Array of strings representing the command
      *            line input arguments
      */
-    public static void main(String[] args)
-        throws ParseException,
-        FileNotFoundException {
-
-        DataReader reader;
-
-        if (args.length == 1) {
-            reader = new DataReader(args[0]);
-        }
-        else {
-            reader = new DataReader(
-                "Cases_and_Deaths_by_race_CRDT_Sep2020.csv");
-        }
-
-        LinkedList<StateData> states = reader.getStates();
+    public static void main(String[] args) {
         
-        for (StateData state : states) {
-            System.out.println(state.toString());
-            System.out.println("----------------------------------------");
+        try {
+            DataReader reader;
+            
+            if (args.length == 1) {
+                reader = new DataReader(args[0]);
+            }
+            else {
+                reader = new DataReader(
+                    "Cases_and_Deaths_by_race_CRDT_Sep2020.csv");
+            }
+
+            LinkedList<StateData> states = reader.getStates();
+            
+            for (StateData state : states) {
+                System.out.println(state.toString());
+                System.out.println("----------------------------------------");
+            }
         }
-         
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

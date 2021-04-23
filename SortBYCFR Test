@@ -40,13 +40,14 @@ public class SortByCFRTest extends student.TestCase {
 
     /**
      * Tests compare() to ensure it returns -1 when the
-     * first parameter object  has a larger CFR
+     * first parameter object has a larger CFR
      */
     public void testCompareLargeCFR() {
 
         assertEquals(-1, comparator.compare(white, black));
     }
-    
+
+
     /**
      * Tests compare() to ensure it returns 1 when the
      * first parameter object has a smaller CFR
@@ -55,13 +56,17 @@ public class SortByCFRTest extends student.TestCase {
 
         assertEquals(1, comparator.compare(black, latino));
     }
-    
+
+
     /**
-     * Tests compare() to ensure it returns 0 when the two parameter 
-     * Race object have the same CFR
+     * Tests compare() to ensure it returns -13 when the two parameter
+     * Race object have the same CFR so it compares them based on
+     * lexicographically order
      */
     public void testCompareSameCFR() {
 
-        assertEquals(0, comparator.compare(black, black));
+        Race other = new Race("other", 5000, 1000);
+
+        assertEquals(-13, comparator.compare(black, other));
     }
 }

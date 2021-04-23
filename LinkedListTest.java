@@ -2,12 +2,22 @@ package prj5;
 
 import java.util.Iterator;
 
-import prj5.LinkedList.LLIterator;
+/**
+ * Virginia Tech Honor Code Pledge:
+ * 
+ * As a Hokie, I will conduct myself with honor and integrity
+ * at all times.
+ * I will not lie, cheat, or steal, nor will I accept the actions of
+ * those who do.
+ * --Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+ */
 
 /**
- * Tests LinkedList
- * @author Sean Stolburg (seanstolburg88)
- * @version 4/22/2021
+ * Tests all of the methods in the LinkedList class to
+ * ensure that they run and perform as expected
+ * 
+ * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+ * @version 4.22.2021
  */
 public class LinkedListTest extends student.TestCase {
     /**
@@ -15,14 +25,15 @@ public class LinkedListTest extends student.TestCase {
      */
     public void testGetSize() {
         LinkedList<Integer> list = new LinkedList<Integer>();
-        
+
         assertEquals(0, list.getSize());
         list.add(1);
         assertEquals(1, list.getSize());
         list.remove(1);
         assertEquals(0, list.getSize());
     }
-    
+
+
     /**
      * Tests add(T entry)
      */
@@ -33,7 +44,8 @@ public class LinkedListTest extends student.TestCase {
         list.add(3);
         assertEquals(2, list.getSize());
     }
-    
+
+
     /**
      * Tests remove(T entry)
      */
@@ -48,10 +60,10 @@ public class LinkedListTest extends student.TestCase {
             err = e;
         }
         assertNotNull(err);
-        
+
         list.remove(1);
         assertEquals("{}", list.toString());
-        
+
         LinkedList<Integer> list2 = new LinkedList<Integer>();
         list2.add(1);
         list2.add(2);
@@ -59,42 +71,14 @@ public class LinkedListTest extends student.TestCase {
         list2.remove(3);
         assertEquals("{1, 2}", list2.toString());
     }
-    
-    /**
-     * Tests get(int index)
-     */
-    public void testGet() {
-        LinkedList<Integer> list = new LinkedList<Integer>();
-        
-        Exception err = null;
-        try {
-            list.get(-1);
-        }
-        catch (Exception e) {
-            err = e;
-        }
-        assertNotNull(err);
-        Exception err2 = null;
-        try {
-            list.get(2);
-        }
-        catch (Exception e) {
-            err2 = e;
-        }
-        assertNotNull(err2);
-        
-        list.add(1);
-        int using = 2;
-        list.add(using);
-        assertEquals(using, list.get(1).intValue());
-    }
-    
+
+
     /**
      * Tests setPosition(T entry, int index)
      */
     public void testSetPosition() {
         LinkedList<Integer> list = new LinkedList<Integer>();
-        
+
         Exception err = null;
         try {
             list.setPosition(1, 0);
@@ -103,7 +87,7 @@ public class LinkedListTest extends student.TestCase {
             err = e;
         }
         assertNotNull(err);
-        
+
         list.add(1);
         Exception err2 = null;
         try {
@@ -121,16 +105,17 @@ public class LinkedListTest extends student.TestCase {
             err3 = e;
         }
         assertNotNull(err3);
-        
+
         list.add(2);
         list.setPosition(2, 0);
         assertEquals("{2, 1}", list.toString());
-        
+
         list.add(3);
         list.setPosition(3, 1);
         assertEquals("{2, 3, 1}", list.toString());
     }
-    
+
+
     /**
      * Tests iterator()
      */
@@ -139,7 +124,8 @@ public class LinkedListTest extends student.TestCase {
         Iterator<Integer> it = list.iterator();
         assertNotNull(it);
     }
-    
+
+
     /**
      * Tests toString()
      */

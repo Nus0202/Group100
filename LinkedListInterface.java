@@ -25,6 +25,13 @@ public interface LinkedListInterface<T> {
     public abstract void remove(T entry);
     
     /**
+     * Gets the entry at the given index
+     * @param index the index
+     * @return the entry
+     */
+    public abstract T get(int index);
+    
+    /**
      * Changes the position of the given entry
      * @param entry the entry
      * @param index to this position

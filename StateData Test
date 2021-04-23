@@ -1,0 +1,98 @@
+package prj5;
+
+/**
+ * Virginia Tech Honor Code Pledge:
+ * 
+ * As a Hokie, I will conduct myself with honor and integrity
+ * at all times.
+ * I will not lie, cheat, or steal, nor will I accept the actions of
+ * those who do.
+ * --Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+ */
+
+/**
+ * Tests all of the methods in the StateData class to
+ * ensure that they run and perform as expected
+ * 
+ * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+ * @version 04.21.2021
+ */
+public class StateDataTest extends student.TestCase {
+
+    private StateData virginia;
+
+    /**
+     * Sets up each test method before it runs
+     */
+    public void setUp() {
+
+        virginia = new StateData("virginia", 5000, 5000, 5000, 5000, 5000, 1000,
+            1500, 2000, 2500, 3000);
+
+    }
+
+
+    /**
+     * Tests getName() to ensure it returns the correct name of this StateData
+     * object
+     */
+    public void testGetName() {
+
+        assertEquals("virginia", virginia.getName());
+    }
+
+
+    /**
+     * Tests getRaces() to ensure it returns the correct LinkedLisr of this
+     * StateData object
+     */
+    public void testGetRaces() {
+
+        LinkedList<Race> listOfRaces = virginia.getLinkedList();
+
+        assertEquals(
+            "{white CFR: 20.0, black CFR: 30.0, latino CFR: 40.0, asian CFR: 50.0, " 
+        + "other CFR: 60.0}", listOfRaces.toString());
+    }
+
+
+    /**
+     * Tests toString() method to ensure it returns the correct string
+     * representation of thus StateData object
+     */
+    public void testToString() {
+
+        assertEquals("virginia: {white CFR: 20.0, black CFR: 30.0,"
+            + " latino CFR: 40.0, asian CFR: 50.0, other CFR: 60.0}", virginia
+                .toString());
+    }
+
+
+    /**
+     * Tests sortByAlpha() to ensure it sorts the LinkedList of Race objects
+     * by alphabetically order
+     */
+    public void testSortByAplha() {
+
+        virginia.sortByAlphabet();
+
+        assertEquals(
+            "virginia: {asian CFR: 50.0, black CFR: 30.0, latino CFR: 40.0, "
+                + "other CFR: 60.0, white CFR: 20.0}", virginia.toString());
+    }
+
+
+    /**
+     * Tests sortByCaseFatalityRatio() to ensure it sorts the LinkedList of Race
+     * objects by CFR
+     */
+    public void testSortByCaseFatalityRatio() {
+
+        virginia.sortByCaseFatalityRatio();
+
+        assertEquals(
+            "virginia: {other CFR: 60.0, asian CFR: 50.0, latino CFR: 40.0,"
+                + " black CFR: 30.0, white CFR: 20.0}", virginia.toString());
+    }
+
+}

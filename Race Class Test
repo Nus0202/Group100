@@ -31,6 +31,30 @@ public class RaceTest extends student.TestCase {
 
 
     /**
+     * Tests Race() constructor when the first parameter is -1
+     * and therefore CFR should equal -1
+     */
+    public void testRaceConstructorNA1() {
+
+        asian = new Race("asian", -1, 500);
+
+        assertEquals(-1, asian.getCFR(), 0.1);
+    }
+
+
+    /**
+     * Tests Race() constructor when the second parameter is -1
+     * and therefore CFR should equal -1
+     */
+    public void testRaceConstructorNA2() {
+
+        asian = new Race("asian", 5000, -1);
+
+        assertEquals(-1, asian.getCFR(), 0.1);
+    }
+
+
+    /**
      * Tests getRace() to ensure it returns the correct name
      * of the Race object calling this method
      */
@@ -51,12 +75,11 @@ public class RaceTest extends student.TestCase {
 
 
     /**
-     * Tests toString() to ensure it returns the correct 
+     * Tests toString() to ensure it returns the correct
      * String representation of this Race object
      */
     public void testToString() {
-        
-        assertEquals("asian: 5000 cases, 20.0% CFR", 
-            asian.toString());
+
+        assertEquals("asian: 5000 cases, 20.0% CFR", asian.toString());
     }
 }

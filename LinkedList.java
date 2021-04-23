@@ -135,6 +135,63 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
         return false;
     }
     
+    
+     /**
+     * Sorts the LinkedList based on the ordering of the parameter Comparator
+     * 
+     * @param comaprator
+     *            Determines the ordering of the LinkedList
+     */
+    public void sort(Comparator<T> comparator) {
+
+        if (this.getSize() > 0) {
+
+            Node unsorted = head.getNext();
+            Node sorted = head;
+            sorted.setNext(null);
+
+            while (unsorted != null) {
+
+                Node nodeToInsert = unsorted;
+                unsorted = unsorted.getNext();
+                insertComparator(nodeToInsert, comparator);
+            }
+        }
+    }
+
+
+    /**
+     * Helper method that sorts the LinkedList based on the parameter Comparator
+     * 
+     * @param node
+     *            The node needed to be sorted
+     * @param comparator
+     *            Determines the ordering of the LinkedList
+     */
+    private void insertComparator(Node node, Comparator<T> comparator) {
+
+        T currentData = node.getData();
+        Node currentNode = head;
+        Node previousNode = null;
+
+        while (currentNode != null && comparator.compare(currentData,
+            currentNode.getData()) > 0) {
+            previousNode = currentNode;
+            currentNode = currentNode.getNext();
+        }
+
+        if (previousNode != null) {
+            previousNode.setNext(node);
+            node.setNext(currentNode);
+        }
+        else {
+            node.setNext(currentNode);
+            head = node;
+        }
+    }
+
+    
+    
     @Override
     public Iterator<T> iterator() {
         return new LLIterator();

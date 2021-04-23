@@ -61,6 +61,35 @@ public class LinkedListTest extends student.TestCase {
     }
     
     /**
+     * Tests get(int index)
+     */
+    public void testGet() {
+        LinkedList<Integer> list = new LinkedList<Integer>();
+        
+        Exception err = null;
+        try {
+            list.get(-1);
+        }
+        catch (Exception e) {
+            err = e;
+        }
+        assertNotNull(err);
+        Exception err2 = null;
+        try {
+            list.get(2);
+        }
+        catch (Exception e) {
+            err2 = e;
+        }
+        assertNotNull(err2);
+        
+        list.add(1);
+        int using = 2;
+        list.add(using);
+        assertEquals(using, list.get(1).intValue());
+    }
+    
+    /**
      * Tests setPosition(T entry, int index)
      */
     public void testSetPosition() {

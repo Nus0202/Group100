@@ -11,88 +11,124 @@ package prj5;
  */
 
 /**
- * Tests all of the methods in the StateData class to
- * ensure that they run and perform as expected
+ * Represents StateData objects, whose function within this program will
+ * including storing Race objects into LinkedLists
  * 
  * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
  * @version 04.21.2021
  */
-public class StateDataTest extends student.TestCase {
+public class StateData {
 
-    private StateData virginia;
+    private String stateName;
+    private LinkedList<Race> races;
 
     /**
-     * Sets up each test method before it runs
+     * Creates a new StateData object
+     * 
+     * @param name
+     *            This StateData's name
+     * @param whiteCases
+     *            This StateData's total number of white COVID-19 cases
+     * @param blackCases
+     *            This StateData's total number of black COVID-19 cases
+     * @param latinoCases
+     *            This StateData's total number of latino COVID-19 cases
+     * @param asianCases
+     *            This StateData's total number of asian COVID-19 cases
+     * @param otherCases
+     *            This StateData's total number of other races COVID-19 cases
+     * @param whiteD
+     *            This StateData's number of white COVID-19 deaths
+     * @param blackD
+     *            This StateData's number of black COVID-19 deaths
+     * @param latinoD
+     *            This StateData's number of latino COVID-19 deaths
+     * @param asianD
+     *            This StateData's number of asian COVID-19 deaths
+     * @param otherD
+     *            This StateData's number of other races COVID-19 deaths
      */
-    public void setUp() {
+    public StateData(
+        String name,
+        int whiteCases,
+        int blackCases,
+        int latinoCases,
+        int asianCases,
+        int otherCases,
+        int whiteD,
+        int blackD,
+        int latinoD,
+        int asianD,
+        int otherD) {
 
-        virginia = new StateData("virginia", 5000, 5000, 5000, 5000, 5000, 1000,
-            1500, 2000, 2500, 3000);
+        stateName = name;
+        Race white = new Race("white", whiteCases, whiteD);
+        Race black = new Race("black", blackCases, blackD);
+        Race latino = new Race("latino", latinoCases, latinoD);
+        Race asian = new Race("asian", asianCases, asianD);
+        Race otherRaces = new Race("other", otherCases, otherD);
 
+        races = new LinkedList<Race>();
+
+        races.add(white);
+        races.add(black);
+        races.add(latino);
+        races.add(asian);
+        races.add(otherRaces);
     }
 
 
     /**
-     * Tests getName() to ensure it returns the correct name of this StateData
-     * object
+     * Gets this StateData's name
+     * 
+     * @return This StateData object's name
      */
-    public void testGetName() {
+    public String getName() {
 
-        assertEquals("virginia", virginia.getName());
+        return stateName;
     }
 
 
     /**
-     * Tests getRaces() to ensure it returns the correct LinkedLisr of this
-     * StateData object
+     * Gets this StateData's LinkedList of Race objects
+     * 
+     * @return This StateData's LinkedList<Race>
      */
-    public void testGetRaces() {
+    public LinkedList<Race> getLinkedList() {
 
-        LinkedList<Race> listOfRaces = virginia.getLinkedList();
-
-        assertEquals(
-            "{white CFR: 20.0, black CFR: 30.0, latino CFR: 40.0, asian CFR: 50.0, " 
-        + "other CFR: 60.0}", listOfRaces.toString());
+        return races;
     }
 
 
     /**
-     * Tests toString() method to ensure it returns the correct string
-     * representation of thus StateData object
+     * Returns a string representation of this StateData
+     * <StateData name> [Race object 1, Race object 2, ...]
+     * 
+     * @return This StateData's string representation
      */
-    public void testToString() {
+    public String toString() {
 
-        assertEquals("virginia: {white CFR: 20.0, black CFR: 30.0,"
-            + " latino CFR: 40.0, asian CFR: 50.0, other CFR: 60.0}", virginia
-                .toString());
+        StringBuilder builder = new StringBuilder();
+
+        builder.append(this.stateName + ": ");
+        builder.append(this.races.toString());
+
+        return builder.toString();
     }
-
 
     /**
-     * Tests sortByAlpha() to ensure it sorts the LinkedList of Race objects
-     * by alphabetically order
+     * Sorts the LinkedList of Race objects by alphabetical order
      */
-    public void testSortByAplha() {
+    public void sortByAlphabet() {
 
-        virginia.sortByAlphabet();
-
-        assertEquals(
-            "virginia: {asian CFR: 50.0, black CFR: 30.0, latino CFR: 40.0, "
-                + "other CFR: 60.0, white CFR: 20.0}", virginia.toString());
+        races.sort(new SortByAlpha());
     }
-
 
     /**
-     * Tests sortByCaseFatalityRatio() to ensure it sorts the LinkedList of Race
-     * objects by CFR
+     * Sorts the LinkedList of Race objects in descending order of CFR
      */
-    public void testSortByCaseFatalityRatio() {
+    public void sortByCaseFatalityRatio() {
 
-        virginia.sortByCaseFatalityRatio();
-
-        assertEquals(
-            "virginia: {other CFR: 60.0, asian CFR: 50.0, latino CFR: 40.0,"
-                + " black CFR: 30.0, white CFR: 20.0}", virginia.toString());
+        races.sort(new SortByCFR());
     }
-
 }

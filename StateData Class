@@ -1,13 +1,4 @@
-// Virginia Tech Honor Code Pledge:
-//
-// As a Hokie, I will conduct myself with honor and integrity at all times.
-// I will not lie, cheat, or steal, nor will I accept the actions of those who
-// do.
-// -- Zhengxiao Sun, Emily Kroliczak, Sean Stolburg
-
 package prj5;
-
-import java.util.Comparator;
 
 /**
  * Virginia Tech Honor Code Pledge:
@@ -119,13 +110,11 @@ public class StateData {
 
         StringBuilder builder = new StringBuilder();
 
-        builder.append(this.stateName);
-        builder.append("\n");
+        builder.append(this.stateName + ": ");
         builder.append(this.races.toString());
 
         return builder.toString();
     }
-
 
     /**
      * Sorts the LinkedList of Race objects by alphabetical order
@@ -135,56 +124,11 @@ public class StateData {
         races.sort(new SortByAlpha());
     }
 
-
     /**
      * Sorts the LinkedList of Race objects in descending order of CFR
      */
     public void sortByCaseFatalityRatio() {
 
         races.sort(new SortByCFR());
-    }
-
-    /**
-     * Contains the functionality used to sort the Race objects
-     * in alphabetical order
-     */
-    private class SortByAlpha implements Comparator<Race> {
-
-        /**
-         * This method is used for sorting Race objects in
-         * ascending order of name
-         */
-        @Override
-        public int compare(Race raceOne, Race raceTwo) {
-
-            return raceOne.getRace().compareTo(raceTwo.getRace());
-        }
-
-    }
-
-
-    /**
-     * Contains the functionality used to sort the Race objects
-     * in descending order of CFR
-     */
-    private class SortByCFR implements Comparator<Race> {
-
-        /**
-         * This method is used for sorting Race objects in
-         * descending order of CFR
-         */
-        @Override
-        public int compare(Race raceOne, Race raceTwo) {
-
-            if (raceOne.getCFR() > raceTwo.getCFR()) {
-                return -1;
-            }
-            else if (raceOne.getCFR() < raceTwo.getCFR()) {
-                return 1;
-            }
-            else {
-                return 0;
-            }
-        }
     }
 }

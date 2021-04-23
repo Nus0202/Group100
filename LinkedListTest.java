@@ -2,8 +2,6 @@ package prj5;
 
 import java.util.Iterator;
 
-import prj5.LinkedList.LLIterator;
-
 /**
  * Tests LinkedList
  * @author Sean Stolburg (seanstolburg88)

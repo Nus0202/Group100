@@ -35,7 +35,7 @@ public class SortByCFR implements Comparator<Race> {
             return 1;
         }
         else {
-            return 0;
+            return raceOne.getRace().compareTo(raceTwo.getRace()); 
         }
     }
 }

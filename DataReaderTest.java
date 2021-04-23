@@ -33,8 +33,11 @@ public class DataReaderTest extends student.TestCase {
     }
 
 
+    /**
+     * This method will test DataReader() method.
+     * 
+     */
     public void testDataReader() {
-        String filename1 = "CovidOutput_1.txt";
         Exception thrown = null;
         try {
             read = new DataReader(filename);
@@ -43,7 +46,19 @@ public class DataReaderTest extends student.TestCase {
             thrown = exception;
         }
         assertTrue(thrown instanceof ParseException);
-
+    }
+    
+    
+    /**
+     * This method will test getStates() method.
+     * @throws FileNotFoundException 
+     * @throws ParseException 
+     * 
+     */
+    public void testGetStates() throws ParseException, FileNotFoundException {
+        String filename2 = "Cases_and_Deaths_by_race_CRDT_Sep2020.csv";
+        read = new DataReader(filename2);
+        DataReader read2 = read;
+        assertEquals(read, read2);
     }
 }
- 

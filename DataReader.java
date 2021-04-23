@@ -25,8 +25,11 @@ public class DataReader {
     private LinkedList<StateData> data;
 
     /**
-     * This constructor will creates a colony and window based on input files.
+     * This constructor will creates a LinkedList of state data and window based
+     * on input files.
      * 
+     * @param filename
+     *            the name of the input file.
      * 
      */
     public DataReader(String filename)
@@ -40,12 +43,12 @@ public class DataReader {
 
 
     /**
-     * This method will reads the planet file.
+     * This method will reads the file.
      * 
      * @param filename
      * 
-     * 
-     * 
+     * @return LinkedList<StateData>
+     *         the LinkedList of state data from the input file
      */
     private LinkedList<StateData> readFile(String filename)
         throws ParseException,
@@ -78,11 +81,13 @@ public class DataReader {
 
 
     /**
-     * This method will reads the planet file.
+     * This helper method will reads the planet file.
      * 
      * @param string
+     *            we want to check with "NA"
      * 
-     * 
+     * @return int
+     *         0 if is equals to "NA"
      * 
      */
     private int checkNA(String string) {

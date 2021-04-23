@@ -1,0 +1,34 @@
+package prj5;
+
+import java.util.Comparator;
+
+/**
+ * Virginia Tech Honor Code Pledge:
+ * 
+ * As a Hokie, I will conduct myself with honor and integrity
+ * at all times.
+ * I will not lie, cheat, or steal, nor will I accept the actions of
+ * those who do.
+ * --Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+ */
+
+/**
+ * Contains the functionality used to sort the Race objects 
+ * in alphabetical order
+ * 
+ * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+ * @version 04.21.2021
+ */
+public class SortByAlpha implements Comparator<Race> {
+
+    /**
+     * This method is used for sorting Race objects in 
+     * ascending order of name
+     */
+    @Override
+    public int compare(Race raceOne, Race raceTwo) {
+       
+        return raceOne.getRace().compareTo(raceTwo.getRace()); 
+    }
+    
+}

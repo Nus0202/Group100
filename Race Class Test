@@ -83,3 +83,4 @@ public class RaceTest extends student.TestCase {
         assertEquals("asian: 5000 cases, 20.0% CFR", asian.toString());
     }
 }
+

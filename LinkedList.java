@@ -50,42 +50,11 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
                 curr = curr.next;
             }
             curr.setNext(new Node(entry));
-            
-            
-            
-            /*
-            T current = head.data;
-            for (T data : this) {
-                current = data;
-            }
-            getNode(current).setNext(new Node(entry));*/
+
             size++;
             
         }
     }
-
-
-    /**
-     * Gets the node that contains the data
-     * 
-     * @param data
-     *            the given data
-     * @return the node
-     */
-    private Node getNode(T data) {
-        if (contains(data)) {
-            Node curr = head;
-            for (int i = 0; i < size; i++) {
-                if (curr.data.equals(data)) {
-                    return curr;
-                }
-                curr = curr.next;
-            }
-        }
-
-        return null;
-    }
-
 
     @Override
     public void remove(T entry) {

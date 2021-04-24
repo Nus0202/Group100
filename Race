@@ -89,17 +89,19 @@ public class Race {
         builder.append(this.raceName);
         builder.append(": " + this.totalCases + " cases, ");
 
-        if (stringCFR.equals("1.0") || stringCFR.equals("-1.0")) {
-            builder.append("1% CFR");
-        }
-        else if (stringCFR.equals("25.0")) {
-            builder.append("25% CFR"); 
+        String checkRemainder = stringCFR.substring(stringCFR.length() - 1,
+            stringCFR.length());
+
+        int num = Integer.parseInt(checkRemainder);
+
+        if (num != 0) {
+            builder.append(stringCFR + "% CFR");
         }
         else {
-            builder.append(stringCFR + "% CFR");
+            String intString = stringCFR.substring(0, stringCFR.length() - 2);
+            builder.append(intString + "% CFR");
         }
 
         return builder.toString();
     }
 }
-

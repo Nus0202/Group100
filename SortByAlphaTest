@@ -46,7 +46,8 @@ public class SortByAlphaTest extends student.TestCase {
 
         assertEquals(21, comparator.compare(white, black));
     }
-    
+
+
     /**
      * Tests compare() to ensure it returns a negative value when the
      * first parameter object's name has a smaller value
@@ -55,9 +56,10 @@ public class SortByAlphaTest extends student.TestCase {
 
         assertEquals(-10, comparator.compare(black, latino));
     }
-    
+
+
     /**
-     * Tests compare() to ensure it returns 0 when the two parameter 
+     * Tests compare() to ensure it returns 0 when the two parameter
      * Race object have the same name
      */
     public void testCompareZero() {

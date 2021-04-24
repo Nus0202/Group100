@@ -1,21 +1,14 @@
-// Virginia Tech Honor Code Pledge:
-//
-// As a Hokie, I will conduct myself with honor and integrity at all times.
-// I will not lie, cheat, or steal, nor will I accept the actions of those who
-// do.
-// -- Zhengxiao Sun, Emily Kroliczak, Sean Stolburg
-
 package prj5;
 
 import java.io.FileNotFoundException;
 import bsh.ParseException;
 
 /**
- * This is a test class for DataReader class.
+ * Tests all of the methods in the DataReader class to
+ * ensure that they run and perform as expected
  * 
- * @author Zhengxiao Sun
- *         PID:zhengxiao
- * @version 2021.4.8
+ * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+ * @version 04.21.2021
  */
 public class DataReaderTest extends student.TestCase {
 
@@ -25,11 +18,9 @@ public class DataReaderTest extends student.TestCase {
     /**
      * sets up any needed variables for test methods
      * 
-     * @throws FileNotFoundException
-     * @throws ParseException
      */
     public void setUp() {
-        filename = "Cases_and_Deaths_by_race_RANDOM_NUMBERS.csv";
+        filename = "Cases_and_Deaths_by_race_RANDOM_NUMBERSERROR.csv";
     }
 
 
@@ -45,12 +36,12 @@ public class DataReaderTest extends student.TestCase {
         catch (Exception exception) {
             thrown = exception;
         }
-        assertFalse(thrown instanceof ParseException);
+        assertTrue(thrown instanceof ParseException);
 
-        String filename = "emptyfile";
+        String emptyFilename = "emptyfile";
         Exception thrown1 = null;
         try {
-            read = new DataReader(filename);
+            read = new DataReader(emptyFilename);
         }
         catch (Exception exception) {
             thrown1 = exception;
@@ -62,14 +53,9 @@ public class DataReaderTest extends student.TestCase {
     /**
      * This method will test getStates() method.
      * 
-     * @throws FileNotFoundException
-     * @throws ParseException
-     * 
      */
     public void testGetStates() {
         String filename2 = "Cases_and_Deaths_by_race_CRDT_Sep2020.csv";
-        DataReader read2 = read;
-        assertEquals(read, read2);
         Exception thrown = null;
         try {
             read = new DataReader(filename2);
@@ -78,5 +64,9 @@ public class DataReaderTest extends student.TestCase {
             thrown = exception;
         }
         assertFalse(thrown instanceof ParseException);
+
+        DataReader read2 = read;
+        assertEquals(read.getStates(), read2.getStates());
+
     }
 }

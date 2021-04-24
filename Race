@@ -83,7 +83,7 @@ public class Race {
 
         String stringCFR = "";
         
-        if (caseFatalityRatio >= 0.95 && caseFatalityRatio <= 1.05) {
+        if (caseFatalityRatio > 0.5 && caseFatalityRatio < 1.5) {
             stringCFR = "1";
         }
         else {

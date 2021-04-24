@@ -92,6 +92,9 @@ public class Race {
         if (stringCFR.equals("1.0") || stringCFR.equals("-1.0")) {
             builder.append("1% CFR");
         }
+        else if (stringCFR.equals("25.0")) {
+            builder.append("25% CFR"); 
+        }
         else {
             builder.append(stringCFR + "% CFR");
         }

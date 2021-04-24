@@ -1,3 +1,10 @@
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I accept the actions of those who
+// do.
+// -- Zhengxiao Sun, Emily Kroliczak, Sean Stolburg
+
 package prj5;
 
 import java.text.DecimalFormat;
@@ -41,7 +48,7 @@ public class Race {
 
         this.raceName = name;
         this.totalCases = caseNum;
-        
+
         if (caseNum == -1 || deathNum == -1) {
             caseFatalityRatio = -1;
         }
@@ -81,7 +88,6 @@ public class Race {
      */
     public String toString() {
 
-        
         DecimalFormat df1 = new DecimalFormat("0.0");
         String stringCFR = df1.format(caseFatalityRatio);
 

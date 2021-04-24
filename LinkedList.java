@@ -45,12 +45,22 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
             size = 1;
         }
         else {
+            Node curr = head;
+            for (int i = 0; i < size - 1; i++) {
+                curr = curr.next;
+            }
+            curr.setNext(new Node(entry));
+            
+            
+            
+            /*
             T current = head.data;
             for (T data : this) {
                 current = data;
             }
-            getNode(current).setNext(new Node(entry));
+            getNode(current).setNext(new Node(entry));*/
             size++;
+            
         }
     }
 

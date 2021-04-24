@@ -14,7 +14,7 @@ import bsh.ParseException;
  * This is a test class for DataReader class.
  * 
  * @author Zhengxiao Sun
- *         PID:9062-79113
+ *         PID:zhengxiao
  * @version 2021.4.8
  */
 public class DataReaderTest extends student.TestCase {
@@ -29,7 +29,7 @@ public class DataReaderTest extends student.TestCase {
      * @throws ParseException
      */
     public void setUp() {
-        filename = "Cases_and_Deaths_by_race_RANDOM_NUMBERS1.csv";
+        filename = "Cases_and_Deaths_by_race_RANDOM_NUMBERS.csv";
     }
 
 
@@ -45,7 +45,17 @@ public class DataReaderTest extends student.TestCase {
         catch (Exception exception) {
             thrown = exception;
         }
-        assertTrue(thrown instanceof ParseException);
+        assertFalse(thrown instanceof ParseException);
+
+        String filename = "emptyfile";
+        Exception thrown1 = null;
+        try {
+            read = new DataReader(filename);
+        }
+        catch (Exception exception) {
+            thrown1 = exception;
+        }
+        assertTrue(thrown1 instanceof FileNotFoundException);
     }
 
 

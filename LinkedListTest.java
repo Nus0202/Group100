@@ -130,6 +130,16 @@ public class LinkedListTest extends student.TestCase {
         LinkedList<Integer> list = new LinkedList<Integer>();
         Iterator<Integer> it = list.iterator();
         assertNotNull(it);
+        
+        assertNull(it.next());
+        
+        assertFalse(it.hasNext());
+        
+        list.add(null);
+        Iterator<Integer> it2 = list.iterator();
+        assertFalse(it2.hasNext());
+        
+        
     }
 
 
@@ -146,4 +156,3 @@ public class LinkedListTest extends student.TestCase {
         assertEquals("2", list.toString());
     }
 }
-

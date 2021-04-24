@@ -1,26 +1,25 @@
-// Virginia Tech Honor Code Pledge:
-//
-// As a Hokie, I will conduct myself with honor and integrity at all times.
-// I will not lie, cheat, or steal, nor will I accept the actions of those who
-// do.
-// -- Zhengxiao Sun, Emily Kroliczak, Sean Stolburg
-
 package prj5;
 
 /**
+ * Virginia Tech Honor Code Pledge:
  * 
- * 
- * @author Zhengxiao Sun
- *         PID:9062-79113
- *         Sean Stolburg
- *         seanstolburg88
- * @version 2021.4.22
+ * As a Hokie, I will conduct myself with honor and integrity
+ * at all times.
+ * I will not lie, cheat, or steal, nor will I accept the actions of
+ * those who do.
+ * --Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
  */
 
+/**
+ * Contains the functionality for output the data
+ * 
+ * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+ * @version 4.22.2021
+ */
 public class Input {
 
     /**
-     * main method which will uses constructor by
+     * Main method which will uses constructor by
      * parameters.
      * 
      * @param args
@@ -43,6 +42,11 @@ public class Input {
             LinkedList<StateData> states = reader.getStates();
 
             for (StateData state : states) {
+                System.out.println(state.getName());
+                state.sortByAlphabet();
+                System.out.println(state.toString());
+                System.out.println();
+                state.sortByCaseFatalityRatio();
                 System.out.println(state.toString());
                 System.out.println("=====");
             }

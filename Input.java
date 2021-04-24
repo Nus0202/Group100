@@ -1,25 +1,26 @@
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I accept the actions of those who
+// do.
+// -- Zhengxiao Sun, Emily Kroliczak, Sean Stolburg
+
 package prj5;
 
 /**
- * Virginia Tech Honor Code Pledge:
+ * This class have one main method. This main method will call reader class and
+ * Initializes a GUI window.
  * 
- * As a Hokie, I will conduct myself with honor and integrity
- * at all times.
- * I will not lie, cheat, or steal, nor will I accept the actions of
- * those who do.
- * --Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+ * @author Zhengxiao Sun
+ *         Emily Kroliczak
+ *         Sean Stolburg
+ * @version 2021.4.8
  */
 
-/**
- * Contains the functionality for output the data
- * 
- * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
- * @version 4.22.2021
- */
 public class Input {
 
     /**
-     * Main method which will uses constructor by
+     * main method which will uses constructor by
      * parameters.
      * 
      * @param args

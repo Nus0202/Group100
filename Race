@@ -83,7 +83,8 @@ public class Race {
 
         DecimalFormat df1 = new DecimalFormat("0.0");
         String stringCFR = "";
-        if (caseFatalityRatio > 0.000009 && caseFatalityRatio < 1.000001) {
+        
+        if (caseFatalityRatio >= 0.97 && caseFatalityRatio <= 1.03) {
             stringCFR = "1";
         }
         else {

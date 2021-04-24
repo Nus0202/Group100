@@ -17,9 +17,6 @@ package prj5;
  * @version 2021.4.22
  */
 
-import java.io.FileNotFoundException;
-import bsh.ParseException;
-
 public class Input {
 
     /**
@@ -31,10 +28,10 @@ public class Input {
      *            line input arguments
      */
     public static void main(String[] args) {
-        
+
         try {
             DataReader reader;
-            
+
             if (args.length == 1) {
                 reader = new DataReader(args[0]);
             }
@@ -44,10 +41,10 @@ public class Input {
             }
 
             LinkedList<StateData> states = reader.getStates();
-            
+
             for (StateData state : states) {
                 System.out.println(state.toString());
-                System.out.println("----------------------------------------");
+                System.out.println("=====");
             }
         }
         catch (Exception e) {

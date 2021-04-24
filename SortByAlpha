@@ -13,7 +13,7 @@ import java.util.Comparator;
  */
 
 /**
- * Contains the functionality used to sort the Race objects 
+ * Contains the functionality used to sort the Race objects
  * in alphabetical order
  * 
  * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
@@ -22,13 +22,13 @@ import java.util.Comparator;
 public class SortByAlpha implements Comparator<Race> {
 
     /**
-     * This method is used for sorting Race objects in 
+     * This method is used for sorting Race objects in
      * ascending order of name
      */
     @Override
     public int compare(Race raceOne, Race raceTwo) {
-       
-        return raceOne.getRace().compareTo(raceTwo.getRace()); 
+
+        return raceOne.getRace().compareTo(raceTwo.getRace());
     }
-    
+
 }

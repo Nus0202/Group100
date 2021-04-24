@@ -110,8 +110,6 @@ public class StateData {
 
         StringBuilder builder = new StringBuilder();
 
-        builder.append(this.stateName);
-        builder.append("\n");
         builder.append(this.races.toString());
 
         return builder.toString();

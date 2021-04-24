@@ -83,14 +83,15 @@ public class Race {
 
         String stringCFR = "";
         
-        if (caseFatalityRatio > 0.9 && caseFatalityRatio < 1.1) {
+        stringCFR = df1.format(caseFatalityRatio);
+        
+        if (stringCFR.equals("1.0")) {
             stringCFR = "1";
         }
         else {
             DecimalFormat df1 = new DecimalFormat("0.0");
             stringCFR = df1.format(caseFatalityRatio);
         }
-        
         
         StringBuilder builder = new StringBuilder();
 

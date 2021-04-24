@@ -64,7 +64,7 @@ public class StateData {
         stateName = name;
         Race white = new Race("white", whiteCases, whiteD);
         Race black = new Race("black", blackCases, blackD);
-        Race latino = new Race("latino", latinoCases, latinoD);
+        Race latino = new Race("latinx", latinoCases, latinoD);
         Race asian = new Race("asian", asianCases, asianD);
         Race otherRaces = new Race("other", otherCases, otherD);
 
@@ -110,11 +110,13 @@ public class StateData {
 
         StringBuilder builder = new StringBuilder();
 
-        builder.append(this.stateName + ": ");
+        builder.append(this.stateName);
+        builder.append("\n");
         builder.append(this.races.toString());
 
         return builder.toString();
     }
+
 
     /**
      * Sorts the LinkedList of Race objects by alphabetical order
@@ -123,6 +125,7 @@ public class StateData {
 
         races.sort(new SortByAlpha());
     }
+
 
     /**
      * Sorts the LinkedList of Race objects in descending order of CFR

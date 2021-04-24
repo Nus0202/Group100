@@ -1,9 +1,17 @@
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I accept the actions of those who
+// do.
+// -- Zhengxiao Sun, Emily Kroliczak, Sean Stolburg
+
 package prj5;
 
 import java.util.Iterator;
 
 /**
  * Tests LinkedList
+ * 
  * @author Sean Stolburg (seanstolburg88)
  * @version 4/22/2021
  */
@@ -13,14 +21,15 @@ public class LinkedListTest extends student.TestCase {
      */
     public void testGetSize() {
         LinkedList<Integer> list = new LinkedList<Integer>();
-        
+
         assertEquals(0, list.getSize());
         list.add(1);
         assertEquals(1, list.getSize());
         list.remove(1);
         assertEquals(0, list.getSize());
     }
-    
+
+
     /**
      * Tests add(T entry)
      */
@@ -31,7 +40,8 @@ public class LinkedListTest extends student.TestCase {
         list.add(3);
         assertEquals(2, list.getSize());
     }
-    
+
+
     /**
      * Tests remove(T entry)
      */
@@ -46,18 +56,20 @@ public class LinkedListTest extends student.TestCase {
             err = e;
         }
         assertNotNull(err);
-        
+
         list.remove(1);
-        assertEquals("{}", list.toString());
-        
+        assertEquals("", list.toString());
+
         LinkedList<Integer> list2 = new LinkedList<Integer>();
         list2.add(1);
         list2.add(2);
         list2.add(3);
         list2.remove(3);
-        assertEquals("{1, 2}", list2.toString());
+        assertEquals("1\n"
+            + "2", list2.toString());
     }
-    
+
+
     /**
      * Tests iterator()
      */
@@ -66,17 +78,19 @@ public class LinkedListTest extends student.TestCase {
         Iterator<Integer> it = list.iterator();
         assertNotNull(it);
     }
-    
+
+
     /**
      * Tests toString()
      */
     public void testToString() {
         LinkedList<Integer> list = new LinkedList<Integer>();
-        assertEquals("{}", list.toString());
+        assertEquals("", list.toString());
         list.add(1);
         list.add(2);
-        assertEquals("{1, 2}", list.toString());
+        assertEquals("1\n"
+            + "2", list.toString());
         list.remove(1);
-        assertEquals("{2}", list.toString());
+        assertEquals("2", list.toString());
     }
 }

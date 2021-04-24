@@ -1,12 +1,9 @@
-/**
- * Virginia Tech Honor Code Pledge:
- * 
- * As a Hokie, I will conduct myself with honor and integrity
- * at all times.
- * I will not lie, cheat, or steal, nor will I accept the actions of
- * those who do.
- * --Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
- */
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I accept the actions of those who
+// do.
+// -- Zhengxiao Sun, Emily Kroliczak, Sean Stolburg
 
 package prj5;
 
@@ -57,9 +54,12 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
         }
     }
 
+
     /**
      * Gets the node that contains the data
-     * @param data the given data
+     * 
+     * @param data
+     *            the given data
      * @return the node
      */
     private Node getNode(T data) {
@@ -72,7 +72,7 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
                 curr = curr.next;
             }
         }
-        
+
         return null;
     }
 
@@ -97,10 +97,13 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
             size--;
         }
     }
-    
+
+
     /**
      * Whether the LL contains the entry
-     * @param entry the entry
+     * 
+     * @param entry
+     *            the entry
      * @return whether the list has it
      */
     private boolean contains(T entry) {
@@ -176,18 +179,16 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
 
     @Override
     public String toString() {
-        String returning = "{";
+        String returning = "";
 
         Node current = head;
         while (current != null) {
             returning = returning + "" + current.data.toString();
             current = current.next;
             if (current != null) {
-                returning = returning + ", ";
+                returning = returning + "\n";
             }
         }
-
-        returning = returning + "}";
         return returning;
     }
 

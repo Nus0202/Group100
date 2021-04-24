@@ -1,3 +1,10 @@
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I accept the actions of those who
+// do.
+// -- Zhengxiao Sun, Emily Kroliczak, Sean Stolburg
+
 package prj5;
 
 /**
@@ -22,19 +29,26 @@ package prj5;
 public interface LinkedListInterface<T> {
     /**
      * Gets the number of entries
+     * 
      * @return number of entries
      */
     public abstract int getSize();
-    
+
+
     /**
      * Adds an entry
-     * @param entry the entry to add
+     * 
+     * @param entry
+     *            the entry to add
      */
     public abstract void add(T entry);
-    
+
+
     /**
      * Removes an entry
-     * @param entry the entry to remove
+     * 
+     * @param entry
+     *            the entry to remove
      */
     public abstract void remove(T entry);
 }

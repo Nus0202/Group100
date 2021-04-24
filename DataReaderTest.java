@@ -29,7 +29,7 @@ public class DataReaderTest extends student.TestCase {
      * @throws ParseException
      */
     public void setUp() {
-        filename = "Cases_and_Deaths_by_race_RANDOM_NUMBERS.csv";
+        filename = "Cases_and_Deaths_by_race_RANDOM_NUMBERS1.csv";
     }
 
 
@@ -47,12 +47,13 @@ public class DataReaderTest extends student.TestCase {
         }
         assertTrue(thrown instanceof ParseException);
     }
-    
-    
+
+
     /**
      * This method will test getStates() method.
-     * @throws FileNotFoundException 
-     * @throws ParseException 
+     * 
+     * @throws FileNotFoundException
+     * @throws ParseException
      * 
      */
     public void testGetStates() {

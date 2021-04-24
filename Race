@@ -42,7 +42,7 @@ public class Race {
         this.raceName = name;
         this.totalCases = caseNum;
 
-        if (totalCases == -1 || deathNum == -1) {
+        if (caseNum == -1 || deathNum == -1) {
             caseFatalityRatio = -1;
         }
         else {
@@ -81,24 +81,22 @@ public class Race {
      */
     public String toString() {
 
-        String stringCFR = "";
-        
-        stringCFR = df1.format(caseFatalityRatio);
-        
-        if (stringCFR.equals("1.0")) {
-            stringCFR = "1";
-        }
-        else {
-            DecimalFormat df1 = new DecimalFormat("0.0");
-            stringCFR = df1.format(caseFatalityRatio);
-        }
-        
+        DecimalFormat df1 = new DecimalFormat("0.0");
+        String stringCFR = df1.format(caseFatalityRatio);
+
         StringBuilder builder = new StringBuilder();
 
         builder.append(this.raceName);
         builder.append(": " + this.totalCases + " cases, ");
 
-        builder.append(stringCFR + "% CFR");
+        if (stringCFR.equals("1.0") || stringCFR.equals("-1.0")) {
+            builder.append("1% CFR");
+        }
+        else {
+            builder.append(stringCFR + "% CFR");
+        }
+
         return builder.toString();
     }
 }
+

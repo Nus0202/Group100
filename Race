@@ -82,15 +82,15 @@ public class Race {
     public String toString() {
 
         DecimalFormat df1 = new DecimalFormat("0.0");
-
-        int num = (int)caseFatalityRatio;
         String stringCFR = "";
-        if (num == 1) {
+        if (caseFatalityRatio > 0.000009 && caseFatalityRatio < 1.000001) {
             stringCFR = "1";
         }
         else {
             stringCFR = df1.format(caseFatalityRatio);
         }
+        
+        
         StringBuilder builder = new StringBuilder();
 
         builder.append(this.raceName);

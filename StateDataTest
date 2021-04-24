@@ -50,11 +50,11 @@ public class StateDataTest extends student.TestCase {
 
         LinkedList<Race> listOfRaces = virginia.getLinkedList();
 
-        assertEquals("white: 5000 cases, 20.0% CFR\n"
-            + "black: 5000 cases, 30.0% CFR\n"
-            + "latinx: 5000 cases, 40.0% CFR\n"
-            + "asian: 5000 cases, 50.0% CFR\n"
-            + "other: 5000 cases, 60.0% CFR", listOfRaces.toString());
+        assertEquals("white: 5000 cases, 20% CFR\n"
+            + "black: 5000 cases, 30% CFR\n"
+            + "latinx: 5000 cases, 40% CFR\n"
+            + "asian: 5000 cases, 50% CFR\n"
+            + "other: 5000 cases, 60% CFR", listOfRaces.toString());
     }
 
 
@@ -64,12 +64,11 @@ public class StateDataTest extends student.TestCase {
      */
     public void testToString() {
 
-        assertEquals("virginia\n"
-            + "white: 5000 cases, 20.0% CFR\n"
-            + "black: 5000 cases, 30.0% CFR\n"
-            + "latinx: 5000 cases, 40.0% CFR\n"
-            + "asian: 5000 cases, 50.0% CFR\n"
-            + "other: 5000 cases, 60.0% CFR", virginia
+        assertEquals("white: 5000 cases, 20% CFR\n"
+            + "black: 5000 cases, 30% CFR\n"
+            + "latinx: 5000 cases, 40% CFR\n"
+            + "asian: 5000 cases, 50% CFR\n"
+            + "other: 5000 cases, 60% CFR", virginia
                 .toString());
     }
 
@@ -82,12 +81,11 @@ public class StateDataTest extends student.TestCase {
 
         virginia.sortByAlphabet();
 
-        assertEquals("virginia\n"
-            + "asian: 5000 cases, 50.0% CFR\n"
-            + "black: 5000 cases, 30.0% CFR\n"
-            + "latinx: 5000 cases, 40.0% CFR\n"
-            + "other: 5000 cases, 60.0% CFR\n"
-            + "white: 5000 cases, 20.0% CFR", virginia
+        assertEquals("asian: 5000 cases, 50% CFR\n"
+            + "black: 5000 cases, 30% CFR\n"
+            + "latinx: 5000 cases, 40% CFR\n"
+            + "other: 5000 cases, 60% CFR\n"
+            + "white: 5000 cases, 20% CFR", virginia
                 .toString());
     }
 
@@ -101,12 +99,11 @@ public class StateDataTest extends student.TestCase {
         virginia.sortByCaseFatalityRatio();
 
         assertEquals(
-            "virginia\n"
-            + "other: 5000 cases, 60.0% CFR\n"
-            + "asian: 5000 cases, 50.0% CFR\n"
-            + "latinx: 5000 cases, 40.0% CFR\n"
-            + "black: 5000 cases, 30.0% CFR\n"
-            + "white: 5000 cases, 20.0% CFR",
+            "other: 5000 cases, 60% CFR\n"
+            + "asian: 5000 cases, 50% CFR\n"
+            + "latinx: 5000 cases, 40% CFR\n"
+            + "black: 5000 cases, 30% CFR\n"
+            + "white: 5000 cases, 20% CFR",
             virginia.toString());
     }
 }

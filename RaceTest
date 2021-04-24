@@ -1,5 +1,3 @@
-package prj5;
-
 /**
  * Virginia Tech Honor Code Pledge:
  * 
@@ -9,6 +7,8 @@ package prj5;
  * those who do.
  * --Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
  */
+
+package prj5;
 
 /**
  * Tests all of the methods in the Race class to
@@ -83,4 +83,3 @@ public class RaceTest extends student.TestCase {
         assertEquals("asian: 5000 cases, 20.0% CFR", asian.toString());
     }
 }
-

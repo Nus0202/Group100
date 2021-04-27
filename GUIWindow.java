@@ -108,17 +108,24 @@ public class GUIWindow {
      */
     private void updateShowedState(StateData state) {
         int index = 0;
-        for (Race race: state.getLinkedList()) {
+        int barHeight = 0;
+        for (Race race : state.getLinkedList()) {
             TextShape ts = barTextShapes[index];
             ts.setText(race.getRace());
-            
-            //set the bar's height
-            //use "bars[index]"
-            
+            ts.moveTo((window.getGraphPanelWidth() - ts.getWidth()) / 2, window
+                .getGraphPanelHeight() - (window.getGraphPanelHeight() - 20));
+            window.addShape(ts);
+            if (race.getCFR() >= 0) {
+                barHeight = (int)(race.getCFR() / 10.0) * 100;
+            }
+            else {
+                
+            }
             index++;
         }
-        
-        //for each race in "state", update the associated bar and textShapes on the window
-        //so that they have the correct height/position/text/etc
+
+        // for each race in "state", update the associated bar and textShapes on
+        // the window
+        // so that they have the correct height/position/text/etc
     }
 }

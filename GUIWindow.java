@@ -45,11 +45,22 @@ public class GUIWindow {
      */
     public GUIWindow(LinkedList<StateData> data) {
         this.stateData = data;
-        
+       
+        this.window = new Window();
 
-        // create buttons/shapes/textShapes
-        
-        //add them to the window
+        this.currentState = this.stateData.getFront();
+
+        this.sortByAlphaButton = new Button("SortByAlpha");
+        sortByAlphaButton.onClick(this, "clickedSortByAlpha");
+        this.window.addButton(sortByAlphaButton, WindowSide.NORTH);
+
+        this.quitButton = new Button("Quit");
+        quitButton.onClick(this, "clickedQuit");
+        this.window.addButton(quitButton, WindowSide.NORTH);
+
+        this.sortByCFRButton = new Button("SortByCFR");
+        sortByCFRButton.onClick(this, "clickedSortByCFR");
+        this.window.addButton(sortByCFRButton, WindowSide.NORTH);
     }
 
 

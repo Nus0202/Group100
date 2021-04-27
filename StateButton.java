@@ -4,13 +4,13 @@ import cs2.Button;
 
 public class StateButton extends Button{
     
-    private String state;
+    private StateData state;
     
-    public StateButton(String State) {
+    public StateButton(StateData State) {
         this.state = State;
     }
     
-    public String getState() {
+    public StateData getState() {
         return state;
     }
 }

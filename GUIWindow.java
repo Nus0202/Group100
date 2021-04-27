@@ -23,12 +23,7 @@ import cs2.Window;
  * @version 4.27.2021
  */
 public class GUIWindow {
-    private Shape leftBar;
-    private Shape midLeftBar;
-    private Shape midBar;
-    private Shape midRightBar;
-    private Shape rightBar;
-
+    private Shape[] bars;
     private Button sortByAlphaButton;
     private Button sortByCFRButton;
     private Button quitButton;
@@ -115,6 +110,7 @@ public class GUIWindow {
             ts.setText(race.getRace());
             
             //set the bar's height
+            //use "bars[index]"
             
             index++;
         }

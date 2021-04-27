@@ -46,11 +46,13 @@ public class GUIWindow {
     }
     
     public void clickedSortByAlpha(Button button) {
-        
+        currentState.sortByAlphabet();
+        updateRacePosition(currentState.getName());
     }
     
     public void clickedSortByCFR(Button button) {
-        
+        currentState.sortByCaseFatalityRatio();
+        updateRacePosition(currentState.getName());
     }
     
     public void clickedState(Button stateButton) {

@@ -1,14 +1,17 @@
-// Virginia Tech Honor Code Pledge:
-//
-// As a Hokie, I will conduct myself with honor and integrity at all times.
-// I will not lie, cheat, or steal, nor will I accept the actions of those who
-// do.
-// -- Zhengxiao Sun, Emily Kroliczak, Sean Stolburg
-
 package prj5;
 
 import java.util.Comparator;
 import java.util.Iterator;
+
+/**
+ * Virginia Tech Honor Code Pledge:
+ * 
+ * As a Hokie, I will conduct myself with honor and integrity
+ * at all times.
+ * I will not lie, cheat, or steal, nor will I accept the actions of
+ * those who do.
+ * --Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+ */
 
 /**
  * A Linked List of Nodes
@@ -77,7 +80,14 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
         }
     }
 
-
+    /**
+     * Gets the head of the LinkedList
+     */
+    public T getFront() {
+        
+        return head.data; 
+    }
+    
     /**
      * Whether the LL contains the entry
      * 
@@ -118,7 +128,6 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
         }
     }
 
-
     /**
      * Helper method that sorts the LinkedList based on the parameter Comparator
      * 
@@ -133,7 +142,7 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
         Node currentNode = head;
         Node previousNode = null;
 
-        while (currentNode != null && comparator.compare(currentData,
+        while  (currentNode != null && comparator.compare(currentData,
             currentNode.getData()) > 0) {
             previousNode = currentNode;
             currentNode = currentNode.getNext();

@@ -47,7 +47,9 @@ public class GUIWindow {
         this.stateData = data;
         
 
-        // more here
+        // create buttons/shapes/textShapes
+        
+        //add them to the window
     }
 
 
@@ -96,6 +98,7 @@ public class GUIWindow {
      * 
      */
     private void updateShowedState(StateData state) {
-
+        //for each race in "state", update the associated bar and textShapes on the window
+        //so that they have the correct height/position/text/etc
     }
 }

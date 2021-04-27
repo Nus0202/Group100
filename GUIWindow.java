@@ -1,3 +1,4 @@
+
 package prj5;
 
 /**
@@ -47,23 +48,30 @@ public class GUIWindow {
     
     public void clickedSortByAlpha(Button button) {
         currentState.sortByAlphabet();
-        updateRacePosition(currentState.getName());
+        updateShowedState(currentState);
     }
     
     public void clickedSortByCFR(Button button) {
         currentState.sortByCaseFatalityRatio();
-        updateRacePosition(currentState.getName());
+        updateShowedState(currentState);
     }
     
-    public void clickedState(Button stateButton) {
-        
+    public void clickedState(Button button) {
+        if (button.getClass() == StateButton.class) {
+            StateButton cast = (StateButton) button;
+            currentState = cast.getState();
+            updateShowedState(cast.getState());
+        }
+        else {
+            throw new IllegalArgumentException();
+        }
     }
     
     public void clickedQuit(Button button) {
         
     }
     
-    private void updateRacePosition(Race race) {
-        
+    private void updateShowedState(StateData state) {
+        //shows the "state" based on it's race's order
     }
 }

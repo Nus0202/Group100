@@ -1,4 +1,3 @@
-
 package prj5;
 
 /**
@@ -29,33 +28,50 @@ public class GUIWindow {
     private Shape midBar;
     private Shape midRightBar;
     private Shape rightBar;
-    
+
     private Button sortByAlphaButton;
     private Button sortByCFRButton;
     private Button quitButton;
     private StateButton[] stateButtons;
     private TextShape[] barTextShapes;
-    
+
     private Window window;
     private LinkedList<StateData> stateData;
     private StateData currentState;
+
     
+    /**
+     * 
+     */
     public GUIWindow(LinkedList<StateData> data) {
         this.stateData = data;
         
-        //more here
+
+        // more here
     }
-    
+
+
+    /**
+     * 
+     */
     public void clickedSortByAlpha(Button button) {
         currentState.sortByAlphabet();
         updateShowedState(currentState);
     }
-    
+
+
+    /**
+     * 
+     */
     public void clickedSortByCFR(Button button) {
         currentState.sortByCaseFatalityRatio();
         updateShowedState(currentState);
     }
-    
+
+
+    /**
+     * 
+     */
     public void clickedState(Button button) {
         if (button.getClass() == StateButton.class) {
             StateButton cast = (StateButton) button;
@@ -66,12 +82,20 @@ public class GUIWindow {
             throw new IllegalArgumentException();
         }
     }
-    
+
+
+    /**
+     * 
+     */
     public void clickedQuit(Button button) {
-        
+        System.exit(0);
     }
-    
+
+
+    /**
+     * 
+     */
     private void updateShowedState(StateData state) {
-        //shows the "state" based on it's race's order
+
     }
 }

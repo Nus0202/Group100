@@ -56,6 +56,9 @@ public class GUIWindow {
         this.sortByCFRButton = new Button("SortByCFR");
         sortByCFRButton.onClick(this, "clickedSortByCFR");
         this.window.addButton(sortByCFRButton, WindowSide.NORTH);
+        
+         //this.stateButtons[0] = new StateButton(this.stateData.getFront());
+        
     }
 
 

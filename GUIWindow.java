@@ -1,5 +1,12 @@
 package prj5;
 
+import java.awt.Color;
+import cs2.Button;
+import cs2.Shape;
+import cs2.TextShape;
+import cs2.Window;
+import cs2.WindowSide;
+
 /**
  * Virginia Tech Honor Code Pledge:
  * 
@@ -10,20 +17,21 @@ package prj5;
  * --Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
  */
 
-import cs2.Button;
-import cs2.Shape;
-import cs2.TextShape;
-import cs2.Window;
-
 /**
- * Specifies the bar's possible positions
- * (i.e., left, middle, or right)
+ * CLASS DESCRIPTION
  * 
  * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
- * @version 4.27.2021
+ * @version 04.27.2021
  */
 public class GUIWindow {
-    private Shape[] bars;
+    private Shape leftBar;
+    private Shape midLeftBar;
+    private Shape midBar;
+    private Shape midRightBar;
+    private Shape rightBar;
+    static final int barWidth = 20;
+    static final int barLabelGap = 20;
+
     private Button sortByAlphaButton;
     private Button sortByCFRButton;
     private Button quitButton;
@@ -34,16 +42,16 @@ public class GUIWindow {
     private LinkedList<StateData> stateData;
     private StateData currentState;
 
-    
-    /**
-     * 
-     */
     public GUIWindow(LinkedList<StateData> data) {
-        this.stateData = data;
-       
-        this.window = new Window();
 
-        this.currentState = this.stateData.getFront();
+        this.stateData = data;
+
+        this.window = new Window();
+        
+        this.stateButtons = new StateButton[5]; 
+
+        this.currentState = this.stateData.get(0);
+        this.currentState.sortByCaseFatalityRatio();
 
         this.sortByAlphaButton = new Button("SortByAlpha");
         sortByAlphaButton.onClick(this, "clickedSortByAlpha");
@@ -56,36 +64,170 @@ public class GUIWindow {
         this.sortByCFRButton = new Button("SortByCFR");
         sortByCFRButton.onClick(this, "clickedSortByCFR");
         this.window.addButton(sortByCFRButton, WindowSide.NORTH);
-        
-         //this.stateButtons[0] = new StateButton(this.stateData.getFront());
-        
+
+        this.addStateButtons();
+        this.buildShapes();
+        this.buildLabels(leftBar, this.currentState.getLinkedList().get(0));
+        this.buildLabels(midLeftBar, this.currentState.getLinkedList().get(1));
+        this.buildLabels(midBar, this.currentState.getLinkedList().get(2));
+        this.buildLabels(midRightBar, this.currentState.getLinkedList().get(3));
+        this.buildLabels(rightBar, this.currentState.getLinkedList().get(4));
+
+        // create buttons/shapes/textShapes
+
+        // add them to the window
+
+        // more here
     }
 
 
     /**
-     * 
+     * Creates the stateButtons and adds them to this GUIWindow
      */
+    private void addStateButtons() {
+        
+        this.stateButtons[0] = new StateButton(this.stateData.get(0));
+        this.stateButtons[1] = new StateButton(this.stateData.get(1));
+        this.stateButtons[2] = new StateButton(this.stateData.get(2));
+        this.stateButtons[3] = new StateButton(this.stateData.get(3));
+        
+        this.window.addButton(this.stateButtons[0], WindowSide.SOUTH);
+        
+        Button dcButton = new Button("Represent DC");
+        dcButton.onClick(this, "clickedState");
+        this.window.addButton(dcButton, WindowSide.SOUTH);
+
+        Button gaButton = new Button("Represent GA");
+        gaButton.onClick(this, "clickedState");
+        this.window.addButton(gaButton, WindowSide.SOUTH);
+
+        Button mdButton = new Button("Represent MD");
+        mdButton.onClick(this, "clickedState");
+        this.window.addButton(mdButton, WindowSide.SOUTH);
+
+        Button ncButton = new Button("Represent NC");
+        ncButton.onClick(this, "clickedState");
+        this.window.addButton(ncButton, WindowSide.SOUTH);
+
+        Button tnButton = new Button("Represent TN");
+        tnButton.onClick(this, "clickedState");
+        this.window.addButton(tnButton, WindowSide.SOUTH);
+
+        Button vaButton = new Button("Represent VA");
+        vaButton.onClick(this, "clickedState");
+        this.window.addButton(vaButton, WindowSide.SOUTH);
+    }
+
+
+    /**
+     * Generates the height of the bar
+     */
+    private int calBarHeight(Race race) {
+
+        return (int)((race.getCFR() / 10.0) * 100);
+
+    }
+
+
+    /**
+     * Returns the max Bar Height
+     */
+    private int getMaxBarHeight(StateData state) {
+
+        int max = 0;
+        for (Race race : state.getLinkedList()) {
+
+            int barHeight = calBarHeight(race);
+
+            if (barHeight > max) {
+                max = barHeight;
+            }
+        }
+        return max;
+    }
+
+
+    /**
+     * Creates the shapes/bars and adds them to this GUIWindow
+     */
+    private void buildShapes() {
+
+        int maxBarHeight = getMaxBarHeight(this.currentState);
+
+        int yValue = (window.getGraphPanelHeight() - 150);
+        leftBar = new Shape((this.window.getGraphPanelWidth() / 6), yValue
+            + maxBarHeight - calBarHeight(this.currentState.getLinkedList().get(
+                0)), barWidth, calBarHeight(this.currentState.getLinkedList()
+                    .get(0)), Color.BLUE);
+        this.window.addShape(leftBar);
+
+        midLeftBar = new Shape((this.window.getGraphPanelWidth() / 3), yValue
+            + maxBarHeight - calBarHeight(this.currentState.getLinkedList().get(
+                1)), barWidth, calBarHeight(this.currentState.getLinkedList()
+                    .get(1)), Color.BLUE);
+        this.window.addShape(midLeftBar);
+
+        midBar = new Shape((this.window.getGraphPanelWidth() / 2), yValue
+            + maxBarHeight - calBarHeight(this.currentState.getLinkedList().get(
+                2)), barWidth, calBarHeight(this.currentState.getLinkedList()
+                    .get(2)), Color.BLUE);
+        this.window.addShape(midBar);
+
+        midRightBar = new Shape(((2 * this.window.getGraphPanelWidth()) / 3),
+            yValue + maxBarHeight - calBarHeight(this.currentState
+                .getLinkedList().get(3)), barWidth, calBarHeight(
+                    this.currentState.getLinkedList().get(3)), Color.BLUE);
+        this.window.addShape(midRightBar);
+
+        rightBar = new Shape(((5 * this.window.getGraphPanelWidth()) / 6),
+            yValue + maxBarHeight - calBarHeight(this.currentState
+                .getLinkedList().get(4)), barWidth, calBarHeight(
+                    this.currentState.getLinkedList().get(4)), Color.BLUE);
+        this.window.addShape(rightBar);
+    }
+
+
+    /**
+     * Creates the textShapes for this GUIWindow
+     */
+    private void buildLabels(Shape bar, Race race) {
+
+        TextShape raceLabel = new TextShape(bar.getX(), bar.getY() + bar
+            .getHeight() + barLabelGap, race.getRace());
+
+        raceLabel.moveTo(bar.getX() + barWidth / 2 - raceLabel.getWidth() / 2,
+            raceLabel.getY());
+
+        TextShape CFRLabel = new TextShape(bar.getX(), raceLabel.getY()
+            + barLabelGap, race.getCFR() + "%");
+
+        CFRLabel.moveTo(bar.getX() + barWidth / 2 - CFRLabel.getWidth() / 2,
+            CFRLabel.getY());
+
+        this.window.addShape(raceLabel);
+        this.window.addShape(CFRLabel);
+
+    }
+
+
     public void clickedSortByAlpha(Button button) {
+
         currentState.sortByAlphabet();
         updateShowedState(currentState);
     }
 
 
-    /**
-     * 
-     */
     public void clickedSortByCFR(Button button) {
+
         currentState.sortByCaseFatalityRatio();
         updateShowedState(currentState);
     }
 
 
-    /**
-     * 
-     */
     public void clickedState(Button button) {
+
         if (button.getClass() == StateButton.class) {
-            StateButton cast = (StateButton) button;
+            StateButton cast = (StateButton)button;
             currentState = cast.getState();
             updateShowedState(cast.getState());
         }
@@ -95,18 +237,14 @@ public class GUIWindow {
     }
 
 
-    /**
-     * 
-     */
     public void clickedQuit(Button button) {
         System.exit(0);
+
     }
 
 
-    /**
-     * 
-     */
     private void updateShowedState(StateData state) {
+
         int index = 0;
         int barHeight = 0;
         for (Race race : state.getLinkedList()) {
@@ -119,7 +257,7 @@ public class GUIWindow {
                 barHeight = (int)(race.getCFR() / 10.0) * 100;
             }
             else {
-                
+
             }
             index++;
         }
@@ -128,4 +266,5 @@ public class GUIWindow {
         // the window
         // so that they have the correct height/position/text/etc
     }
+
 }

@@ -166,20 +166,34 @@ public class GUIWindow {
      */
     private void buildLabels(Shape bar, Race race) {
 
+        /**
+     * Creates the textShapes for this GUIWindow
+     */
+    private void buildLabels(Shape bar, Race race) {
+
         TextShape raceLabel = new TextShape(bar.getX(), bar.getY() + bar
             .getHeight() + barLabelGap, race.getRace());
 
         raceLabel.moveTo(bar.getX() + barWidth / 2 - raceLabel.getWidth() / 2,
             raceLabel.getY());
 
-        TextShape CFRLabel = new TextShape(bar.getX(), raceLabel.getY()
-            + barLabelGap, race.getCFR() + "%");
+        TextShape CFRLabel = null;
+        if (race.getCFR() == -1) {
+            CFRLabel = new TextShape(bar.getX(), raceLabel.getY() + barLabelGap,
+                "NA");
+        }
+        else {
+            CFRLabel = new TextShape(bar.getX(), raceLabel.getY() + barLabelGap,
+                race.getCFR() + "%");
+        }
 
         CFRLabel.moveTo(bar.getX() + barWidth / 2 - CFRLabel.getWidth() / 2,
             CFRLabel.getY());
 
         this.window.addShape(raceLabel);
         this.window.addShape(CFRLabel);
+
+    }
 
     }
 

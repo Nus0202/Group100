@@ -17,7 +17,7 @@ import java.util.Iterator;
  * ensure that they run and perform as expected
  * 
  * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
- * @version 4.22.2021
+ * @version 4.27.2021
  */
 public class LinkedListTest extends student.TestCase {
 
@@ -73,6 +73,34 @@ public class LinkedListTest extends student.TestCase {
         assertEquals("1\n" + "2", list2.toString());
     }
 
+    /**
+     * Tests get(int index)
+     */
+    public void testGet() {
+        LinkedList<Integer> list = new LinkedList<Integer>();
+        list.add(1);
+        list.add(2);
+        
+        Exception err = null;
+        try {
+            list.get(-1);
+        }
+        catch (Exception e) {
+            err = e;
+        }
+        assertNotNull(err);
+        Exception err2 = null;
+        try {
+            list.get(4);
+        }
+        catch (Exception e) {
+            err2 = e;
+        }
+        assertNotNull(err2);
+        
+        assertEquals(1, list.get(0).intValue());
+        assertEquals(2, list.get(1).intValue());
+    }
 
     /**
      * Tests sort() when the LinkedList is empty

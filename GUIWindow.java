@@ -170,7 +170,7 @@ public class GUIWindow {
      */
     private void buildLabels(Shape bar, Race race) {
 
-        TextShape raceLabel = new TextShape(bar.getX(), bar.getY() + bar
+       TextShape raceLabel = new TextShape(bar.getX(), bar.getY() + bar
             .getHeight() + barLabelGap, race.getRace());
 
         raceLabel.moveTo(bar.getX() + barWidth / 2 - raceLabel.getWidth() / 2,
@@ -178,7 +178,7 @@ public class GUIWindow {
 
         TextShape CFRLabel = null;
         if (race.getCFR() == -1) {
-            CFRLabel = new TextShape(bar.getX(), raceLabel.getY() + barLabelGap,
+            CFRLabel = new TextShape(bar.getX(), bar.getY() + bar.getHeight(),
                 "NA");
         }
         else {
@@ -193,7 +193,6 @@ public class GUIWindow {
         this.window.addShape(CFRLabel);
 
     }
-
 
     public void clickedSortByAlpha(Button button) {
 

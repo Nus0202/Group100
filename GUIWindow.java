@@ -18,10 +18,10 @@ import cs2.WindowSide;
  */
 
 /**
- * CLASS DESCRIPTION
+ * Creates and manages the GUI
  * 
  * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
- * @version 04.27.2021
+ * @version 04.28.2021
  */
 public class GUIWindow {
     private Shape leftBar;
@@ -36,12 +36,15 @@ public class GUIWindow {
     private Button sortByCFRButton;
     private Button quitButton;
     private StateButton[] stateButtons;
-    private TextShape[] barTextShapes;
 
     private Window window;
     private LinkedList<StateData> stateData;
     private StateData currentState;
-
+    
+    /**
+     * Constructs a GUIWindow
+     * @param data data from the DataReader
+     */
     public GUIWindow(LinkedList<StateData> data) {
 
         this.stateData = data;
@@ -67,12 +70,6 @@ public class GUIWindow {
 
         this.addStateButtons();
         this.updateShowedState(currentState);
-
-        // create buttons/shapes/textShapes
-
-        // add them to the window
-
-        // more here
     }
 
 
@@ -167,10 +164,12 @@ public class GUIWindow {
 
     /**
      * Creates the textShapes for this GUIWindow
+     * @param bar based on this bar
+     * @param race based on this race
      */
     private void buildLabels(Shape bar, Race race) {
 
-       TextShape raceLabel = new TextShape(bar.getX(), bar.getY() + bar
+        TextShape raceLabel = new TextShape(bar.getX(), bar.getY() + bar
             .getHeight() + barLabelGap, race.getRace());
 
         raceLabel.moveTo(bar.getX() + barWidth / 2 - raceLabel.getWidth() / 2,
@@ -178,7 +177,7 @@ public class GUIWindow {
 
         TextShape CFRLabel = null;
         if (race.getCFR() == -1) {
-            CFRLabel = new TextShape(bar.getX(), bar.getY() + bar.getHeight(),
+            CFRLabel = new TextShape(bar.getX(), raceLabel.getY() + barLabelGap,
                 "NA");
         }
         else {
@@ -194,6 +193,10 @@ public class GUIWindow {
 
     }
 
+    /**
+     * Called when the associated button is clicked
+     * @param button the button
+     */
     public void clickedSortByAlpha(Button button) {
 
         for (StateData state: stateData) {
@@ -202,7 +205,10 @@ public class GUIWindow {
         updateShowedState(currentState);
     }
 
-
+    /**
+     * Called when the associated button is clicked
+     * @param button the button
+     */
     public void clickedSortByCFR(Button button) {
 
         for (StateData state: stateData) {
@@ -211,20 +217,21 @@ public class GUIWindow {
         updateShowedState(currentState);
     }
 
-
+    /**
+     * Called when the associated StateButton is clicked
+     * @param button the button
+     */
     public void clickedState(Button button) {
-
-        if (button.getClass() == StateButton.class) {
-            StateButton cast = (StateButton)button;
-            currentState = cast.getState();
-            updateShowedState(cast.getState());
-        }
-        else {
-            throw new IllegalArgumentException();
-        }
+        //will always be a StateButton
+        StateButton cast = (StateButton)button;
+        currentState = cast.getState();
+        updateShowedState(cast.getState());
     }
 
-
+    /**
+     * Called when Quit is clicked
+     * @param button the button used
+     */
     public void clickedQuit(Button button) {
         System.exit(0);
 

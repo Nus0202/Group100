@@ -47,8 +47,8 @@ public class GUIWindow {
         this.stateData = data;
 
         this.window = new Window();
-        
-        this.stateButtons = new StateButton[5]; 
+
+        this.stateButtons = new StateButton[5];
 
         this.currentState = this.stateData.get(0);
         this.currentState.sortByCaseFatalityRatio();
@@ -65,13 +65,7 @@ public class GUIWindow {
         sortByCFRButton.onClick(this, "clickedSortByCFR");
         this.window.addButton(sortByCFRButton, WindowSide.NORTH);
 
-        this.addStateButtons();
-        this.buildShapes();
-        this.buildLabels(leftBar, this.currentState.getLinkedList().get(0));
-        this.buildLabels(midLeftBar, this.currentState.getLinkedList().get(1));
-        this.buildLabels(midBar, this.currentState.getLinkedList().get(2));
-        this.buildLabels(midRightBar, this.currentState.getLinkedList().get(3));
-        this.buildLabels(rightBar, this.currentState.getLinkedList().get(4));
+        this.updateShowedState(currentState);
 
         // create buttons/shapes/textShapes
 
@@ -85,14 +79,14 @@ public class GUIWindow {
      * Creates the stateButtons and adds them to this GUIWindow
      */
     private void addStateButtons() {
-        
+
         this.stateButtons[0] = new StateButton(this.stateData.get(0));
         this.stateButtons[1] = new StateButton(this.stateData.get(1));
         this.stateButtons[2] = new StateButton(this.stateData.get(2));
         this.stateButtons[3] = new StateButton(this.stateData.get(3));
-        
+
         this.window.addButton(this.stateButtons[0], WindowSide.SOUTH);
-        
+
         Button dcButton = new Button("Represent DC");
         dcButton.onClick(this, "clickedState");
         this.window.addButton(dcButton, WindowSide.SOUTH);
@@ -244,27 +238,17 @@ public class GUIWindow {
 
 
     private void updateShowedState(StateData state) {
-
-        int index = 0;
-        int barHeight = 0;
-        for (Race race : state.getLinkedList()) {
-            TextShape ts = barTextShapes[index];
-            ts.setText(race.getRace());
-            ts.moveTo((window.getGraphPanelWidth() - ts.getWidth()) / 2, window
-                .getGraphPanelHeight() - (window.getGraphPanelHeight() - 20));
-            window.addShape(ts);
-            if (race.getCFR() >= 0) {
-                barHeight = (int)(race.getCFR() / 10.0) * 100;
-            }
-            else {
-
-            }
-            index++;
-        }
-
+        window.removeAllShapes();
+        this.addStateButtons();
+        this.buildShapes();
+        this.buildLabels(leftBar, state.getLinkedList().get(0));
+        this.buildLabels(midLeftBar, state.getLinkedList().get(1));
+        this.buildLabels(midBar, state.getLinkedList().get(2));
+        this.buildLabels(midRightBar, state.getLinkedList().get(3));
+        this.buildLabels(rightBar, state.getLinkedList().get(4));
         // for each race in "state", update the associated bar and textShapes on
         // the window
         // so that they have the correct height/position/text/etc
-    }
-
+    } 
+    
 }

@@ -47,6 +47,31 @@ public class Race {
         }
         else {
             caseFatalityRatio = ((deathNum / (double)caseNum) * 100);
+
+        }
+        this.roundCFR();
+    }
+
+
+    /**
+     * 
+     */
+    private void roundCFR() {
+
+        DecimalFormat df1 = new DecimalFormat("0.0");
+        String stringCFR = df1.format(caseFatalityRatio);
+
+        String checkRemainder = stringCFR.substring(stringCFR.length() - 1,
+            stringCFR.length());
+
+        int num = Integer.parseInt(checkRemainder);
+
+        if (num != 0) {
+            caseFatalityRatio = Double.parseDouble(stringCFR);
+        }
+        else {
+            String intString = stringCFR.substring(0, stringCFR.length() - 2);
+            caseFatalityRatio = Double.parseDouble(intString);
         }
     }
 
@@ -75,7 +100,7 @@ public class Race {
 
     /**
      * Returns a string representation of this Race
-     * <Race> CFR: <CFR>
+     * <Race>: <totalCases> cases, <CFR>% CFR
      * 
      * @return This Race object's string representation
      */
@@ -103,5 +128,6 @@ public class Race {
         }
 
         return builder.toString();
+
     }
 }

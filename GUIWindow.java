@@ -234,7 +234,9 @@ public class GUIWindow {
     private void updateShowedState(StateData state) {
 
         this.window.removeAllShapes();
-        this.window.addShape(new TextShape(window.getWidth() / 2, 20, currentState.getName() + "Case Fatality Ratio by Race"));
+        TextShape title = new TextShape(window.getWidth() / 2, 20, currentState.getName() + " Case Fatality Ratio by Race");
+        title.setX((window.getWidth() / 2) - (title.getWidth() / 2));
+        this.window.addShape(title);
         
         this.buildShapes();
         this.buildLabels(leftBar, state.getLinkedList().get(0));

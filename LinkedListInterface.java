@@ -51,4 +51,11 @@ public interface LinkedListInterface<T> {
      *            the entry to remove
      */
     public abstract void remove(T entry);
+    
+    /**
+     * Gets the data at the specified index
+     * @param atIndex the index
+     * @return the data
+     */
+    public abstract T get(int index);
 }

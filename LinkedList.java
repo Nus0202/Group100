@@ -17,7 +17,7 @@ import java.util.Iterator;
  * A Linked List of Nodes
  * 
  * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
- * @version 4.22.2021
+ * @version 4.27.2021
  * 
  * @param <T>
  *            the type of entry
@@ -53,7 +53,7 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
                 curr = curr.next;
             }
             curr.setNext(new Node(entry));
-
+            
             size++;
             
         }
@@ -79,14 +79,6 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
             size--;
         }
     }
-
-    /**
-     * Gets the head of the LinkedList
-     */
-    public T getFront() {
-        
-        return head.data; 
-    }
     
     /**
      * Whether the LL contains the entry
@@ -103,7 +95,23 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
         }
         return false;
     }
-
+    
+    @Override
+    public T get(int atIndex) {
+        if (atIndex < 0 || atIndex >= size) {
+            throw new IllegalArgumentException();
+        }
+        
+        int counter = 0;
+        T ret = null;
+        for (T data: this) {
+            if (counter == atIndex) {
+                ret = data;
+            }
+            counter++;
+        }
+        return ret;
+    }
 
     /**
      * Sorts the LinkedList based on the ordering of the parameter Comparator
@@ -127,7 +135,7 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
             }
         }
     }
-
+    
     /**
      * Helper method that sorts the LinkedList based on the parameter Comparator
      * 
@@ -142,7 +150,7 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
         Node currentNode = head;
         Node previousNode = null;
 
-        while  (currentNode != null && comparator.compare(currentData,
+        while (currentNode != null && comparator.compare(currentData,
             currentNode.getData()) > 0) {
             previousNode = currentNode;
             currentNode = currentNode.getNext();

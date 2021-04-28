@@ -122,46 +122,24 @@ public class GUIWindow {
     }
 
 
-    /**
+   /**
      * Creates the shapes/bars and adds them to this GUIWindow
      */
     private void buildShapes() {
 
         int maxBarHeight = getMaxBarHeight();
-
         int yValue = (window.getGraphPanelHeight() - 150);
-        leftBar = new Shape((this.window.getGraphPanelWidth() / 6), yValue
-            + maxBarHeight - calBarHeight(this.currentState.getLinkedList().get(
-                0)), barWidth, calBarHeight(this.currentState.getLinkedList()
-                    .get(0)), Color.BLUE);
-        this.window.addShape(leftBar);
 
-        midLeftBar = new Shape((this.window.getGraphPanelWidth() / 3), yValue
-            + maxBarHeight - calBarHeight(this.currentState.getLinkedList().get(
-                1)), barWidth, calBarHeight(this.currentState.getLinkedList()
-                    .get(1)), Color.BLUE);
-        this.window.addShape(midLeftBar);
+        for (int x = 0; x < 5; x++) {
 
-        midBar = new Shape((this.window.getGraphPanelWidth() / 2), yValue
-            + maxBarHeight - calBarHeight(this.currentState.getLinkedList().get(
-                2)), barWidth, calBarHeight(this.currentState.getLinkedList()
-                    .get(2)), Color.BLUE);
-        this.window.addShape(midBar);
-
-        midRightBar = new Shape(((2 * this.window.getGraphPanelWidth()) / 3),
-            yValue + maxBarHeight - calBarHeight(this.currentState
-                .getLinkedList().get(3)), barWidth, calBarHeight(
-                    this.currentState.getLinkedList().get(3)), Color.BLUE);
-        this.window.addShape(midRightBar);
-
-        rightBar = new Shape(((5 * this.window.getGraphPanelWidth()) / 6),
-            yValue + maxBarHeight - calBarHeight(this.currentState
-                .getLinkedList().get(4)), barWidth, calBarHeight(
-                    this.currentState.getLinkedList().get(4)), Color.BLUE);
-        this.window.addShape(rightBar);
+            int barHeight = calBarHeight(this.currentState.getLinkedList().get(
+                x));
+            bars[x] = new Shape((((x + 1) * this.window.getGraphPanelWidth()) / 6),
+                yValue + maxBarHeight - barHeight, barWidth, barHeight,
+                Color.BLUE);
+            this.window.addShape(bars[x]);
+        }       
     }
-
-
     /**
      * Creates the textShapes for this GUIWindow
      * @param bar based on this bar

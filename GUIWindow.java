@@ -106,15 +106,19 @@ public class GUIWindow {
     /**
      * Returns the max Bar Height
      */
-    private int getMaxBarHeight(StateData state) {
+    private int getMaxBarHeight() {
 
         int max = 0;
-        for (Race race : state.getLinkedList()) {
 
-            int barHeight = calBarHeight(race);
+        for (StateData state : this.stateData) {
 
-            if (barHeight > max) {
-                max = barHeight;
+            for (Race race : state.getLinkedList()) {
+
+                int barHeight = calBarHeight(race);
+
+                if (barHeight > max) {
+                    max = barHeight;
+                }
             }
         }
         return max;
@@ -126,7 +130,7 @@ public class GUIWindow {
      */
     private void buildShapes() {
 
-        int maxBarHeight = getMaxBarHeight(this.currentState);
+        int maxBarHeight = getMaxBarHeight();
 
         int yValue = (window.getGraphPanelHeight() - 150);
         leftBar = new Shape((this.window.getGraphPanelWidth() / 6), yValue
@@ -166,11 +170,6 @@ public class GUIWindow {
      */
     private void buildLabels(Shape bar, Race race) {
 
-        /**
-     * Creates the textShapes for this GUIWindow
-     */
-    private void buildLabels(Shape bar, Race race) {
-
         TextShape raceLabel = new TextShape(bar.getX(), bar.getY() + bar
             .getHeight() + barLabelGap, race.getRace());
 
@@ -192,8 +191,6 @@ public class GUIWindow {
 
         this.window.addShape(raceLabel);
         this.window.addShape(CFRLabel);
-
-    }
 
     }
 
@@ -240,6 +237,6 @@ public class GUIWindow {
         this.buildLabels(midBar, state.getLinkedList().get(2));
         this.buildLabels(midRightBar, state.getLinkedList().get(3));
         this.buildLabels(rightBar, state.getLinkedList().get(4));
-    }  
+    }
 
 }

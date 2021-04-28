@@ -48,7 +48,7 @@ public class GUIWindow {
 
         this.window = new Window();
 
-        this.stateButtons = new StateButton[5];
+        this.stateButtons = new StateButton[6];
 
         this.currentState = this.stateData.get(0);
         this.currentState.sortByCaseFatalityRatio();
@@ -65,6 +65,7 @@ public class GUIWindow {
         sortByCFRButton.onClick(this, "clickedSortByCFR");
         this.window.addButton(sortByCFRButton, WindowSide.NORTH);
 
+        this.addStateButtons();
         this.updateShowedState(currentState);
 
         // create buttons/shapes/textShapes
@@ -80,36 +81,15 @@ public class GUIWindow {
      */
     private void addStateButtons() {
 
-        this.stateButtons[0] = new StateButton(this.stateData.get(0));
-        this.stateButtons[1] = new StateButton(this.stateData.get(1));
-        this.stateButtons[2] = new StateButton(this.stateData.get(2));
-        this.stateButtons[3] = new StateButton(this.stateData.get(3));
+        String[] stateAbbrev = { "DC", "GA", "MD", "NC", "TN", "VA" };
 
-        this.window.addButton(this.stateButtons[0], WindowSide.SOUTH);
+        for (int x = 0; x < 6; x++) {
 
-        Button dcButton = new Button("Represent DC");
-        dcButton.onClick(this, "clickedState");
-        this.window.addButton(dcButton, WindowSide.SOUTH);
-
-        Button gaButton = new Button("Represent GA");
-        gaButton.onClick(this, "clickedState");
-        this.window.addButton(gaButton, WindowSide.SOUTH);
-
-        Button mdButton = new Button("Represent MD");
-        mdButton.onClick(this, "clickedState");
-        this.window.addButton(mdButton, WindowSide.SOUTH);
-
-        Button ncButton = new Button("Represent NC");
-        ncButton.onClick(this, "clickedState");
-        this.window.addButton(ncButton, WindowSide.SOUTH);
-
-        Button tnButton = new Button("Represent TN");
-        tnButton.onClick(this, "clickedState");
-        this.window.addButton(tnButton, WindowSide.SOUTH);
-
-        Button vaButton = new Button("Represent VA");
-        vaButton.onClick(this, "clickedState");
-        this.window.addButton(vaButton, WindowSide.SOUTH);
+            this.stateButtons[x] = new StateButton(this.stateData.get(x));
+            this.stateButtons[x].setTitle("Represent " + stateAbbrev[x]);
+            this.stateButtons[x].onClick(this, "clickedState");
+            this.window.addButton(this.stateButtons[x], WindowSide.SOUTH);
+        }
     }
 
 
@@ -238,17 +218,14 @@ public class GUIWindow {
 
 
     private void updateShowedState(StateData state) {
-        window.removeAllShapes();
-        this.addStateButtons();
+
+        this.window.removeAllShapes();
         this.buildShapes();
         this.buildLabels(leftBar, state.getLinkedList().get(0));
         this.buildLabels(midLeftBar, state.getLinkedList().get(1));
         this.buildLabels(midBar, state.getLinkedList().get(2));
         this.buildLabels(midRightBar, state.getLinkedList().get(3));
         this.buildLabels(rightBar, state.getLinkedList().get(4));
-        // for each race in "state", update the associated bar and textShapes on
-        // the window
-        // so that they have the correct height/position/text/etc
-    } 
-    
+    }  
+
 }

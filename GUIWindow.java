@@ -197,14 +197,18 @@ public class GUIWindow {
 
     public void clickedSortByAlpha(Button button) {
 
-        currentState.sortByAlphabet();
+        for (StateData state: stateData) {
+            state.sortByAlphabet();
+        }
         updateShowedState(currentState);
     }
 
 
     public void clickedSortByCFR(Button button) {
 
-        currentState.sortByCaseFatalityRatio();
+        for (StateData state: stateData) {
+            state.sortByCaseFatalityRatio();
+        }
         updateShowedState(currentState);
     }
 
@@ -231,6 +235,8 @@ public class GUIWindow {
     private void updateShowedState(StateData state) {
 
         this.window.removeAllShapes();
+        this.window.addShape(new TextShape(window.getWidth() / 2, 20, currentState.getName() + "Case Fatality Ratio by Race"));
+        
         this.buildShapes();
         this.buildLabels(leftBar, state.getLinkedList().get(0));
         this.buildLabels(midLeftBar, state.getLinkedList().get(1));

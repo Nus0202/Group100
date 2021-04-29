@@ -1,10 +1,3 @@
-// Virginia Tech Honor Code Pledge:
-//
-// As a Hokie, I will conduct myself with honor and integrity at all times.
-// I will not lie, cheat, or steal, nor will I accept the actions of those who
-// do.
-// -- Zhengxiao Sun, Emily Kroliczak, Sean Stolburg
-
 package prj5;
 
 /**
@@ -27,6 +20,7 @@ package prj5;
  *            The type parameter to be used for LinkedList
  */
 public interface LinkedListInterface<T> {
+
     /**
      * Gets the number of entries
      * 
@@ -36,7 +30,7 @@ public interface LinkedListInterface<T> {
 
 
     /**
-     * Adds an entry
+     * Adds the specified entry
      * 
      * @param entry
      *            the entry to add
@@ -45,17 +39,21 @@ public interface LinkedListInterface<T> {
 
 
     /**
-     * Removes an entry
+     * Removes the specified entry
      * 
      * @param entry
      *            the entry to remove
      */
     public abstract void remove(T entry);
-    
+
+
     /**
      * Gets the data at the specified index
-     * @param atIndex the index
-     * @return the data
+     * 
+     * @param index
+     *            The index
+     *            
+     * @return the data The data at the specified index
      */
     public abstract T get(int index);
 }

@@ -17,7 +17,7 @@ import java.util.Iterator;
  * A Linked List of Nodes
  * 
  * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
- * @version 4.27.2021
+ * @version 4.22.2021
  * 
  * @param <T>
  *            the type of entry
@@ -35,12 +35,23 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
     }
 
 
+    /**
+     * Gets the number of entries in this LinkedList
+     * 
+     * @return This LinkedList's number of entries
+     */
     @Override
     public int getSize() {
         return size;
     }
 
 
+    /**
+     * Adds the specified entry to the back of this LinkedList
+     * 
+     * @param entry
+     *            The entry to be added
+     */
     @Override
     public void add(T entry) {
         if (head == null) {
@@ -53,12 +64,22 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
                 curr = curr.next;
             }
             curr.setNext(new Node(entry));
-            
+
             size++;
-            
         }
     }
 
+
+    /**
+     * If allowed, removes the specified entry within 
+     * this LinkedList
+     * 
+     * @param entry
+     *            The entry to be removed
+     * 
+     * @throws IllegalArgumentException
+     *             Specified entry not found within LinkedList
+     */
     @Override
     public void remove(T entry) {
         if (!contains(entry)) {
@@ -79,13 +100,42 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
             size--;
         }
     }
-    
+
+
     /**
-     * Whether the LL contains the entry
+     * Gets the data at the specified index
+     * 
+     * @param index
+     *            The index
+     * 
+     * @return the data The data at the specified index
+     */
+    @Override
+    public T get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException();
+        }
+
+        int counter = 0;
+        T ret = null;
+        for (T data : this) {
+            if (counter == index) {
+                ret = data;
+            }
+            counter++;
+        }
+        return ret;
+    }
+
+
+    /**
+     * Determines whether this LinkedList contains the specified entry
      * 
      * @param entry
-     *            the entry
-     * @return whether the list has it
+     *            The entry to be checked if it is within this LinkedList
+     * 
+     * @return True if this LinkedList contains the parameter entry
+     *         and false if otherwise
      */
     private boolean contains(T entry) {
         for (T data : this) {
@@ -95,29 +145,14 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
         }
         return false;
     }
-    
-    @Override
-    public T get(int atIndex) {
-        if (atIndex < 0 || atIndex >= size) {
-            throw new IllegalArgumentException();
-        }
-        
-        int counter = 0;
-        T ret = null;
-        for (T data: this) {
-            if (counter == atIndex) {
-                ret = data;
-            }
-            counter++;
-        }
-        return ret;
-    }
+
 
     /**
-     * Sorts the LinkedList based on the ordering of the parameter Comparator
+     * Sorts the LinkedList based on the ordering of the
+     * parameter Comparator
      * 
      * @param comparator
-     *            Determines the ordering of the LinkedList
+     *            Determines the ordering of this LinkedList
      */
     public void sort(Comparator<T> comparator) {
 
@@ -135,9 +170,11 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
             }
         }
     }
-    
+
+
     /**
-     * Helper method that sorts the LinkedList based on the parameter Comparator
+     * Helper method that sorts the LinkedList based on the
+     * parameter Comparator
      * 
      * @param node
      *            The node needed to be sorted
@@ -167,12 +204,22 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
     }
 
 
+    /**
+     * Iterator method that creates Iterator object
+     *
+     * @return new Iterator object
+     */
     @Override
     public Iterator<T> iterator() {
         return new LLIterator();
     }
 
 
+    /**
+     * Returns a string representation of this LinkedList
+     * 
+     * @return This LinkedList string representation
+     */
     @Override
     public String toString() {
         String returning = "";
@@ -191,8 +238,8 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
     /**
      * A Node in the Linked List
      * 
-     * @author Sean Stolburg (seanstolburg88)
-     * @version 4/21/2021
+     * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+     * @version 4.22.2021
      */
     private class Node {
         private T data;
@@ -256,19 +303,30 @@ public class LinkedList<T> implements Iterable<T>, LinkedListInterface<T> {
     /**
      * Iterates over the data in the LinkedList
      * 
-     * @author Sean Stolburg (seanstolburg88)
-     * @version 4/22/2021
+     * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+     * @version 4.22.2021
      */
     public class LLIterator implements Iterator<T> {
 
         private Node curr = head;
 
+        /**
+         * Checks if there are more elements in the list
+         *
+         * @return true if there are more elements in the list
+         *         and false if otherwise
+         */
         @Override
         public boolean hasNext() {
             return curr != null && curr.data != null;
         }
 
 
+        /**
+         * Gets the next value in the list
+         *
+         * @return the next value or null
+         */
         @Override
         public T next() {
             if (curr == null) {

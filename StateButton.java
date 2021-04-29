@@ -1,5 +1,7 @@
 package prj5;
 
+import cs2.Button;
+
 /**
  * Virginia Tech Honor Code Pledge:
  * 
@@ -10,31 +12,35 @@ package prj5;
  * --Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
  */
 
-import cs2.Button;
-
 /**
- * Creates and manages the GUI
+ * Represents the state buttons along the bottom of
+ * the GUIWindow object
  * 
- * @author Sean Stolburg, Emily Kroliczak, Zhengxiao Sun
- * @version 04.28.2021
+ * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+ * @version 04.27.2021
  */
 public class StateButton extends Button {
-    
+
     private StateData state;
-    
+
     /**
-     * Constructs a StateButton
-     * @param State the associated state
+     * Creates a new StateButton
+     * 
+     * @param State
+     *            The StateData object whose data will 
+     *            correspond to this StateButton
      */
     public StateButton(StateData State) {
         this.state = State;
     }
-    
+
     /**
-     * Gets the state
-     * @return the state
+     * Gets the StateData object of this StateButton
+     * 
+     * @return This StateButton's StateData object
      */
     public StateData getState() {
         return state;
     }
+
 }

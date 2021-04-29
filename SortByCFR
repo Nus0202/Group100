@@ -13,7 +13,7 @@ import java.util.Comparator;
  */
 
 /**
- * Contains the functionality used to sort the Race objects 
+ * Contains the functionality used to sort the Race objects
  * in descending order of CFR
  * 
  * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
@@ -24,6 +24,11 @@ public class SortByCFR implements Comparator<Race> {
     /**
      * This method is used for sorting Race objects in
      * descending order of CFR
+     * 
+     * @return -1 if the first parameter objects's CFR is larger,
+     *         1 if the first parameter object's CFR is smaller, and if the two
+     *         parameter object's CFRs are equal, it will sort based on their
+     *         names
      */
     @Override
     public int compare(Race raceOne, Race raceTwo) {
@@ -35,7 +40,7 @@ public class SortByCFR implements Comparator<Race> {
             return 1;
         }
         else {
-            return raceOne.getRace().compareTo(raceTwo.getRace()); 
+            return raceOne.getRace().compareTo(raceTwo.getRace());
         }
     }
 }

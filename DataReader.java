@@ -1,10 +1,3 @@
-// Virginia Tech Honor Code Pledge:
-//
-// As a Hokie, I will conduct myself with honor and integrity at all times.
-// I will not lie, cheat, or steal, nor will I accept the actions of those who
-// do.
-// -- Zhengxiao Sun, Emily Kroliczak, Sean Stolburg
-
 package prj5;
 
 import java.io.File;
@@ -13,41 +6,58 @@ import java.util.Scanner;
 import bsh.ParseException;
 
 /**
- * The DataReader class will read the input and begin the GUIWindow.
+ * Virginia Tech Honor Code Pledge:
  * 
- * @author Zhengxiao Sun
- *         PID:9062-79113
- * @version 2021.4.8
+ * As a Hokie, I will conduct myself with honor and integrity
+ * at all times.
+ * I will not lie, cheat, or steal, nor will I accept the actions of
+ * those who do.
+ * --Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+ */
+
+/**
+ * The DataReader class will read the input and begin the GUIWindow
+ * 
+ * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+ * @version 04.21.2021
  */
 public class DataReader {
 
     private LinkedList<StateData> data;
 
     /**
-     * This constructor will creates a LinkedList of state data and window based
-     * on input files.
+     * Creates a LinkedList of StateData objects and generates
+     * a new GUIWindow object based on the input files
      * 
      * @param filename
-     *            the name of the input file.
-     * 
+     *            The name of the input file
      */
     public DataReader(String filename)
         throws ParseException,
         FileNotFoundException {
         this.data = readFile(filename);
 
-        // will create a GUIWindow here.
-
+        new GUIWindow(this.data);
     }
 
 
     /**
-     * This method will reads the file.
+     * Parses through the parameter String object and if valid,
+     * generates a LinkedList of StateData objects based on the
+     * String object's data
      * 
      * @param filename
+     *            The text file to be parsed through
      * 
      * @return LinkedList<StateData>
-     *         the LinkedList of state data from the input file
+     *         The LinkedList of StateData objects from
+     *         the input file
+     * 
+     * @throws FileNotFoundException
+     *             If the file does not exist
+     * 
+     * @throws ParseException
+     *             If the file's data format is incorrect
      */
     private LinkedList<StateData> readFile(String filename)
         throws ParseException,
@@ -62,7 +72,7 @@ public class DataReader {
             currentLine = scan.nextLine();
             String[] array = currentLine.split(", *");
 
-            if (array.length < 11 || array.length > 11) {
+            if (array.length != 11) {
                 scan.close();
                 throw new ParseException(
                     "The amount of data in this line is incorrect.");
@@ -80,14 +90,14 @@ public class DataReader {
 
 
     /**
-     * This helper method will reads the planet file.
+     * This helper method will read the file and if the parameter
+     * string contains "NA", it will return -1.
      * 
      * @param string
-     *            we want to check with "NA"
+     *            The string this method checks for "NA"
      * 
-     * @return int
-     *         0 if is equals to "NA"
-     * 
+     * @return -1 if is equals to "NA" or else
+     *         the string's parse Integer value
      */
     private int checkNA(String string) {
         if (string.equals("NA")) {
@@ -98,12 +108,11 @@ public class DataReader {
 
 
     /**
-     * Getter method for the states field.
+     * Gets the LinkedList of StateData objects
      * 
-     * @return states field
+     * @return The LinkedList of StateData objects
      */
     public LinkedList<StateData> getStates() {
         return data;
     }
-
 }

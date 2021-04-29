@@ -16,7 +16,7 @@ public class DataReaderTest extends student.TestCase {
     private DataReader read;
 
     /**
-     * sets up any needed variables for test methods
+     * Sets up any needed variables for test methods
      * 
      */
     public void setUp() {
@@ -25,7 +25,9 @@ public class DataReaderTest extends student.TestCase {
 
 
     /**
-     * This method will test DataReader() method.
+     * Test DataReader() method (constructor) when first file 
+     * has an incorrect data format and the second file does
+     * not exist 
      * 
      */
     public void testDataReader() {
@@ -51,7 +53,7 @@ public class DataReaderTest extends student.TestCase {
 
 
     /**
-     * This method will test getStates() method.
+     * Test getStates() 
      * 
      */
     public void testGetStates() {
@@ -67,6 +69,5 @@ public class DataReaderTest extends student.TestCase {
 
         DataReader read2 = read;
         assertEquals(read.getStates(), read2.getStates());
-
     }
 }

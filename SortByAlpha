@@ -24,6 +24,11 @@ public class SortByAlpha implements Comparator<Race> {
     /**
      * This method is used for sorting Race objects in
      * ascending order of name
+     * 
+     * @return a positive value if the first parameter
+     *         object's name is larger, a negative value if the 
+     *         first parameter object's name is smaller,
+     *         or 0 if they are equal
      */
     @Override
     public int compare(Race raceOne, Race raceTwo) {

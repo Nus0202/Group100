@@ -60,7 +60,7 @@ public class SortByCFRTest extends student.TestCase {
 
     /**
      * Tests compare() to ensure it returns -13 when the two parameter
-     * Race object have the same CFR so it compares them based on
+     * Race object have the same CFR so it then compares them based on
      * lexicographically order
      */
     public void testCompareSameCFR() {
@@ -69,5 +69,4 @@ public class SortByCFRTest extends student.TestCase {
 
         assertEquals(-13, comparator.compare(black, other));
     }
-
 }

@@ -43,7 +43,7 @@ public class StateDataTest extends student.TestCase {
 
 
     /**
-     * Tests getRaces() to ensure it returns the correct LinkedLisr of this
+     * Tests getRaces() to ensure it returns the correct LinkedList of this
      * StateData object
      */
     public void testGetRaces() {
@@ -60,7 +60,7 @@ public class StateDataTest extends student.TestCase {
 
     /**
      * Tests toString() method to ensure it returns the correct string
-     * representation of thus StateData object
+     * representation of this StateData object
      */
     public void testToString() {
 
@@ -75,7 +75,7 @@ public class StateDataTest extends student.TestCase {
 
     /**
      * Tests sortByAlpha() to ensure it sorts the LinkedList of Race objects
-     * by alphabetically order
+     * by alphabetical order
      */
     public void testSortByAplha() {
 

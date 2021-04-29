@@ -1,27 +1,27 @@
-// Virginia Tech Honor Code Pledge:
-//
-// As a Hokie, I will conduct myself with honor and integrity at all times.
-// I will not lie, cheat, or steal, nor will I accept the actions of those who
-// do.
-// -- Zhengxiao Sun, Emily Kroliczak, Sean Stolburg
-
 package prj5;
 
 /**
- * This class have one main method. This main method will call reader class and
- * Initializes a GUI window.
+ * Virginia Tech Honor Code Pledge:
  * 
- * @author Zhengxiao Sun
- *         Emily Kroliczak
- *         Sean Stolburg
- * @version 2021.4.8
+ * As a Hokie, I will conduct myself with honor and integrity
+ * at all times.
+ * I will not lie, cheat, or steal, nor will I accept the actions of
+ * those who do.
+ * --Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
  */
 
+/**
+ * Contains the overall functionality of this program
+ * 
+ * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
+ * @version 4.22.2021
+ */
 public class Input {
 
     /**
-     * main method which will uses constructor by
-     * parameters.
+     * Initiates a new DataReader object to parse through
+     * text files and then generates a new GUIWindow object
+     * based on those files' data
      * 
      * @param args
      *            Array of strings representing the command

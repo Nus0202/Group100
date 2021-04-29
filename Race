@@ -54,27 +54,16 @@ public class Race {
 
 
     /**
-     * 
+     * This helper method rounds this Race object's CFR to the first decimal
+     * place
      */
     private void roundCFR() {
 
         DecimalFormat df1 = new DecimalFormat("0.0");
         String stringCFR = df1.format(caseFatalityRatio);
 
-        String checkRemainder = stringCFR.substring(stringCFR.length() - 1,
-            stringCFR.length());
-
-        int num = Integer.parseInt(checkRemainder);
-
-        if (num != 0) {
-            caseFatalityRatio = Double.parseDouble(stringCFR);
-        }
-        else {
-            String intString = stringCFR.substring(0, stringCFR.length() - 2);
-            caseFatalityRatio = Double.parseDouble(intString);
-        }
+        caseFatalityRatio = Double.parseDouble(stringCFR);
     }
-
 
     /**
      * Gets this Race's name
@@ -106,14 +95,12 @@ public class Race {
      */
     public String toString() {
 
-        DecimalFormat df1 = new DecimalFormat("0.0");
-        String stringCFR = df1.format(caseFatalityRatio);
-
         StringBuilder builder = new StringBuilder();
 
         builder.append(this.raceName);
         builder.append(": " + this.totalCases + " cases, ");
 
+        String stringCFR = "" + caseFatalityRatio + ""; 
         String checkRemainder = stringCFR.substring(stringCFR.length() - 1,
             stringCFR.length());
 
@@ -128,6 +115,5 @@ public class Race {
         }
 
         return builder.toString();
-
     }
 }

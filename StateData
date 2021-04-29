@@ -102,7 +102,7 @@ public class StateData {
 
     /**
      * Returns a string representation of this StateData
-     * <StateData name> [Race object 1, Race object 2, ...]
+     * [Race object 1, Race object 2, ...]
      * 
      * @return This StateData's string representation
      */
@@ -117,7 +117,7 @@ public class StateData {
 
 
     /**
-     * Sorts the LinkedList of Race objects by alphabetical order
+     * Sorts the LinkedList of Race objects in alphabetical order
      */
     public void sortByAlphabet() {
 

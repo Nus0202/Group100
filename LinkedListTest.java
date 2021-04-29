@@ -17,7 +17,7 @@ import java.util.Iterator;
  * ensure that they run and perform as expected
  * 
  * @author Emily Kroliczak, Sean Stolburg, Zhengxiao Sun
- * @version 4.27.2021
+ * @version 4.22.2021
  */
 public class LinkedListTest extends student.TestCase {
 
@@ -32,6 +32,50 @@ public class LinkedListTest extends student.TestCase {
         assertEquals(1, list.getSize());
         list.remove(1);
         assertEquals(0, list.getSize());
+    }
+
+
+    /**
+     * Tests get(int index) when the index is out of bounds
+     */
+    public void testGetException() {
+
+        LinkedList<Integer> list = new LinkedList<Integer>();
+        Exception exception1 = null;
+        try {
+            list.get(1);
+        }
+        catch (Exception e) {
+            exception1 = e;
+        }
+        assertTrue(exception1 instanceof IllegalArgumentException);
+
+        Exception exception2 = null;
+        try {
+            list.get(-1);
+        }
+        catch (Exception e) {
+            exception2 = e;
+        }
+        assertTrue(exception2 instanceof IllegalArgumentException);
+    }
+
+
+    /**
+     * Tests get(int index)
+     */
+    public void testGet() {
+
+        LinkedList<Integer> list = new LinkedList<Integer>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        
+        int  firstValue = list.get(0);
+        assertEquals(1, firstValue);
+        
+        int lastValue = list.get(2);
+        assertEquals(3, lastValue);
     }
 
 
@@ -73,34 +117,6 @@ public class LinkedListTest extends student.TestCase {
         assertEquals("1\n" + "2", list2.toString());
     }
 
-    /**
-     * Tests get(int index)
-     */
-    public void testGet() {
-        LinkedList<Integer> list = new LinkedList<Integer>();
-        list.add(1);
-        list.add(2);
-        
-        Exception err = null;
-        try {
-            list.get(-1);
-        }
-        catch (Exception e) {
-            err = e;
-        }
-        assertNotNull(err);
-        Exception err2 = null;
-        try {
-            list.get(4);
-        }
-        catch (Exception e) {
-            err2 = e;
-        }
-        assertNotNull(err2);
-        
-        assertEquals(1, list.get(0).intValue());
-        assertEquals(2, list.get(1).intValue());
-    }
 
     /**
      * Tests sort() when the LinkedList is empty
@@ -158,16 +174,15 @@ public class LinkedListTest extends student.TestCase {
         LinkedList<Integer> list = new LinkedList<Integer>();
         Iterator<Integer> it = list.iterator();
         assertNotNull(it);
-        
+
         assertNull(it.next());
-        
+
         assertFalse(it.hasNext());
-        
+
         list.add(null);
         Iterator<Integer> it2 = list.iterator();
         assertFalse(it2.hasNext());
-        
-        
+
     }
 
 
